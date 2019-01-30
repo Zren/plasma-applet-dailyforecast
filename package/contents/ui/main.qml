@@ -57,6 +57,7 @@ Item {
 				}
 
 				Rectangle {
+					visible: !isNaN(weatherData.todaysTempHigh) || !isNaN(weatherData.todaysTempLow)
 					color: theme.textColor
 					implicitWidth: 20 * units.devicePixelRatio
 					implicitHeight: 1 * units.devicePixelRatio
