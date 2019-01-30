@@ -87,10 +87,13 @@ Item {
 					Layout.fillHeight: true
 					Layout.fillWidth: true
 
+					// Note: wettercom does not have a current temp
 					PlasmaComponents.Label {
 						id: currentTempLabel
 						anchors.centerIn: parent
-						text: i18n("%1°", weatherData.currentTemp)
+						readonly property var value: weatherData.currentTemp
+						readonly property bool hasValue: isNaN(value)
+						text: hasValue ? "" : i18n("%1°", value)
 						font.pointSize: -1
 						font.pixelSize: parent.height
 						font.family: forecastLayout.fontFamily
@@ -99,6 +102,14 @@ Item {
 						verticalAlignment: Text.AlignBottom
 
 						// Rectangle { anchors.centerIn: parent; color: "transparent"; border.width: 1; border.color: "#ff0"; width: parent.contentWidth; height: parent.contentHeight}
+					}
+
+					// Note: wettercom does not have a current temp so use an icon instead
+					PlasmaCore.IconItem {
+						id: currentForecastIcon
+						anchors.fill: parent
+						visible: !currentTempLabel.hasValue
+						source: weatherData.currentConditionIconName
 					}
 
 					// Rectangle { anchors.fill: parent; color: "transparent"; border.width: 1; border.color: "#f00"}

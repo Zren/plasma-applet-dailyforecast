@@ -74,7 +74,7 @@ QtObject {
 	readonly property var todaysWeather: {
 		var data = weatherDataSource.currentData || {}
 		var value = data["Short Forecast Day 0"]
-		var tokens = value ? value.split("|") : ["0", "weather-none-available", "Unknown", "0", "0", "0"]
+		var tokens = value ? value.split("|") : ["", "weather-none-available", "", "", "", ""]
 		tokens[3] = parseInt(tokens[3], 10)
 		tokens[4] = parseInt(tokens[4], 10)
 		tokens[5] = parseInt(tokens[5], 10)
@@ -90,7 +90,7 @@ QtObject {
 
 	property string currentConditionIconName: {
 		var data = weatherDataSource.currentData || {}
-		var conditionIconName = data["Condition Icon"] || null
+		var conditionIconName = data["Condition Icon"] || todaysForecastIcon || null
 		return conditionIconName ? Util.existingWeatherIconName(conditionIconName) : "weather-none-available"
 	}
 
@@ -99,9 +99,9 @@ QtObject {
 		return data["Current Conditions"] || todaysForecastLabel || ""
 	}
 
-	property int currentTemp: {
+	property var currentTemp: {
 		var data = weatherDataSource.currentData || {}
-		return data["Temperature"] || 0
+		return data["Temperature"] || NaN
 	}
 	
 	// property Timer testTimer: Timer {
