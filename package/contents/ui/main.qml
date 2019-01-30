@@ -47,7 +47,7 @@ Item {
 
 				PlasmaComponents.Label {
 					readonly property var value: weatherData.todaysTempHigh
-					text: isNaN(weatherData.todaysTempHigh) ? "" : i18n("%1°", weatherData.todaysTempHigh)
+					text: isNaN(value) ? "" : i18n("%1°", value)
 					
 					font.pointSize: -1
 					font.pixelSize: 14 * units.devicePixelRatio
@@ -65,7 +65,7 @@ Item {
 
 
 				PlasmaComponents.Label {
-					property int value: weatherData.todaysTempLow
+					readonly property var value: weatherData.todaysTempLow
 					text: isNaN(value) ? "" : i18n("%1°", value)
 
 					font.pointSize: -1
