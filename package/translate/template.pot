@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: simpleweather \n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-simpleweather\n"
-"POT-Creation-Date: 2019-01-29 20:34-0500\n"
+"POT-Creation-Date: 2019-01-30 12:28-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,6 +38,6 @@ msgctxt "Use default font"
 msgid "Default"
 msgstr ""
 
-#: ../contents/ui/main.qml:50 ../contents/ui/main.qml:69 ../contents/ui/main.qml:92
+#: ../contents/ui/main.qml:50 ../contents/ui/main.qml:70 ../contents/ui/main.qml:96
 msgid "%1°"
 msgstr ""

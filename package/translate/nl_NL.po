@@ -1,4 +1,4 @@
-# Translation of simpleweather in LANGUAGE
+# Translation of simpleweather in nl_NL
 # Copyright (C) 2019
 # This file is distributed under the same license as the simpleweather package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: simpleweather\n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-simpleweather\n"
-"POT-Creation-Date: 2019-01-29 20:34-0500\n"
+"POT-Creation-Date: 2019-01-30 12:28-0500\n"
 "PO-Revision-Date: 2019-01-30 12:26+0100\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.1.1\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: nl_NL\n"
 
 #: ../contents/config/config.qml:6
 msgid "General"
@@ -39,7 +39,6 @@ msgctxt "Use default font"
 msgid "Default"
 msgstr "Standaard"
 
-#: ../contents/ui/main.qml:50 ../contents/ui/main.qml:69
-#: ../contents/ui/main.qml:92
+#: ../contents/ui/main.qml:50 ../contents/ui/main.qml:70 ../contents/ui/main.qml:96
 msgid "%1°"
 msgstr "%1°"
