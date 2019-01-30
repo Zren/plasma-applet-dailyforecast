@@ -94,14 +94,14 @@ Item {
 						readonly property var value: weatherData.currentTemp
 						readonly property bool hasValue: !isNaN(value)
 						text: hasValue ? i18n("%1°", value) : ""
+						fontSizeMode: Text.FixedSize
 						font.pointSize: -1
 						font.pixelSize: parent.height
+						height: implicitHeight
 						font.family: forecastLayout.fontFamily
 						font.weight: forecastLayout.fontBold
-						horizontalAlignment: Text.AlignHCenter
-						verticalAlignment: Text.AlignBottom
 
-						// Rectangle { anchors.centerIn: parent; color: "transparent"; border.width: 1; border.color: "#ff0"; width: parent.contentWidth; height: parent.contentHeight}
+						// Rectangle { anchors.fill: parent; color: "transparent"; border.width: 1; border.color: "#ff0" }
 					}
 
 					// Note: wettercom does not have a current temp so use an icon instead
