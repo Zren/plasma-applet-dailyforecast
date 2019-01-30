@@ -25,91 +25,91 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 
 
 Window {
-    id: dialog
+	id: dialog
 
-    LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
-    LayoutMirroring.childrenInherit: true
+	LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+	LayoutMirroring.childrenInherit: true
 
-    flags: Qt.Dialog
-    modality: Qt.WindowModal
+	flags: Qt.Dialog
+	modality: Qt.WindowModal
 
-    minimumWidth: mainColumn.Layout.minimumWidth
-    minimumHeight: mainColumn.Layout.minimumHeight
+	minimumWidth: mainColumn.Layout.minimumWidth
+	minimumHeight: mainColumn.Layout.minimumHeight
 
-    title: i18ndc("plasma_applet_org.kde.plasma.weather", "@title:window", "Select Weather Station")
-    color: syspal.window
+	title: i18ndc("plasma_applet_org.kde.plasma.weather", "@title:window", "Select Weather Station")
+	color: syspal.window
 
-    property alias selectedServices : stationPicker.selectedServices
-    property alias source: stationPicker.source
+	property alias selectedServices : stationPicker.selectedServices
+	property alias source: stationPicker.source
 
-    signal accepted
+	signal accepted
 
-    function close() {
-        dialog.visible = false;
-    }
+	function close() {
+		dialog.visible = false;
+	}
 
 
-    SystemPalette {
-        id: syspal
-    }
+	SystemPalette {
+		id: syspal
+	}
 
-    QtControls.Action {
-        id: acceptAction
+	QtControls.Action {
+		id: acceptAction
 
-        shortcut: "Return"
-        enabled: !!source && !stationPicker.handlesEnterKey
-        onTriggered: {
-            accepted();
-            dialog.close();
-        }
-    }
+		shortcut: "Return"
+		enabled: !!source && !stationPicker.handlesEnterKey
+		onTriggered: {
+			accepted();
+			dialog.close();
+		}
+	}
 
-    QtControls.Action {
-        id: cancelAction
+	QtControls.Action {
+		id: cancelAction
 
-        shortcut: "Escape"
-        onTriggered: {
-            dialog.close();
-        }
-    }
+		shortcut: "Escape"
+		onTriggered: {
+			dialog.close();
+		}
+	}
 
-    ColumnLayout {
-        id: mainColumn
-        anchors {
-            fill: parent
-            margins: mainColumn.spacing * units.devicePixelRatio //margins are hardcoded in QStyle we should match that here
-        }
-        // TODO: not yet perfect
-        Layout.minimumWidth: Math.max(stationPicker.Layout.minimumWidth, buttonsRow.implicitWidth) + 2*anchors.margins
-        Layout.minimumHeight: stationPicker.Layout.minimumHeight + buttonsRow.implicitHeight + 2*anchors.margins
+	ColumnLayout {
+		id: mainColumn
+		anchors {
+			fill: parent
+			margins: mainColumn.spacing * units.devicePixelRatio //margins are hardcoded in QStyle we should match that here
+		}
+		// TODO: not yet perfect
+		Layout.minimumWidth: Math.max(stationPicker.Layout.minimumWidth, buttonsRow.implicitWidth) + 2*anchors.margins
+		Layout.minimumHeight: stationPicker.Layout.minimumHeight + buttonsRow.implicitHeight + 2*anchors.margins
 
-        WeatherStationPicker {
-            id: stationPicker
+		WeatherStationPicker {
+			id: stationPicker
 
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-        }
+			Layout.fillWidth: true
+			Layout.fillHeight: true
+		}
 
-        RowLayout {
-            id: buttonsRow
+		RowLayout {
+			id: buttonsRow
 
-            Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+			Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
 
-            QtControls.Button {
-                enabled: !!source
-                iconName: "dialog-ok"
-                text: i18ndc("plasma_applet_org.kde.plasma.weather", "@action:button", "Select")
-                onClicked: {
-                    acceptAction.trigger();
-                }
-            }
-            QtControls.Button {
-                iconName: "dialog-cancel"
-                text: i18ndc("plasma_applet_org.kde.plasma.weather", "@action:button", "Cancel")
-                onClicked: {
-                    cancelAction.trigger();
-                }
-            }
-        }
-    }
+			QtControls.Button {
+				enabled: !!source
+				iconName: "dialog-ok"
+				text: i18ndc("plasma_applet_org.kde.plasma.weather", "@action:button", "Select")
+				onClicked: {
+					acceptAction.trigger();
+				}
+			}
+			QtControls.Button {
+				iconName: "dialog-cancel"
+				text: i18ndc("plasma_applet_org.kde.plasma.weather", "@action:button", "Cancel")
+				onClicked: {
+					cancelAction.trigger();
+				}
+			}
+		}
+	}
 }
