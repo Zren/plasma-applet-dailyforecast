@@ -35,4 +35,15 @@ Or if you know how to make a pull request
 |  Locale  |  Lines  | % Done|
 |----------|---------|-------|
 | Template |       6 |       |
+| de       |     3/6 |   50% |
+| el       |     3/6 |   50% |
+| es       |     3/6 |   50% |
+| fr       |     3/6 |   50% |
+| id       |     3/6 |   50% |
+| ko       |     3/6 |   50% |
 | nl_NL    |     6/6 |  100% |
+| pl       |     3/6 |   50% |
+| pt_BR    |     3/6 |   50% |
+| ru       |     3/6 |   50% |
+| uk       |     3/6 |   50% |
+| zh_CN    |     3/6 |   50% |
