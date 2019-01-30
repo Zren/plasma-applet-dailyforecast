@@ -36,7 +36,7 @@ Window {
     minimumWidth: mainColumn.Layout.minimumWidth
     minimumHeight: mainColumn.Layout.minimumHeight
 
-    title: i18nc("@title:window", "Select Weather Station")
+    title: i18ndc("plasma_applet_org.kde.plasma.weather", "@title:window", "Select Weather Station")
     color: syspal.window
 
     property alias selectedServices : stationPicker.selectedServices
@@ -98,14 +98,14 @@ Window {
             QtControls.Button {
                 enabled: !!source
                 iconName: "dialog-ok"
-                text: i18nc("@action:button", "Select")
+                text: i18ndc("plasma_applet_org.kde.plasma.weather", "@action:button", "Select")
                 onClicked: {
                     acceptAction.trigger();
                 }
             }
             QtControls.Button {
                 iconName: "dialog-cancel"
-                text: i18nc("@action:button", "Cancel")
+                text: i18ndc("plasma_applet_org.kde.plasma.weather", "@action:button", "Cancel")
                 onClicked: {
                     cancelAction.trigger();
                 }

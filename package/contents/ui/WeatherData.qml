@@ -67,7 +67,7 @@ QtObject {
 			plasmoid.busy = false
 			// TODO: inform user
 			var sourceTokens = weatherSource.split("|")
-			var foo = weatherDomain.i18n("Weather information retrieval for %1 timed out.", sourceTokens.value(2))
+			var foo = i18nd("plasma_applet_org.kde.plasma.weather", "Weather information retrieval for %1 timed out.", sourceTokens.value(2))
 		}
 	}
 

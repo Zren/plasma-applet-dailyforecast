@@ -4,17 +4,10 @@ import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 
-import org.kde.private.kquickcontrols 2.0 as KQuickControlsPrivate
 import org.kde.plasma.private.weather 1.0
 
 Item {
 	id: widget
-
-
-	KQuickControlsPrivate.TranslationContext {
-		id: weatherDomain
-		domain: 'plasma_applet_org.kde.plasma.weather'
-	}
 
 	WeatherData {
 		id: weatherData
@@ -35,7 +28,7 @@ Item {
 		PlasmaComponents.Button {
 			anchors.centerIn: parent
 			visible: weatherData.needsConfiguring
-			text: weatherDomain.i18nc("@action:button", "Configure...")
+			text: i18ndc("plasma_applet_org.kde.plasma.weather", "@action:button", "Configure...")
 			onClicked: plasmoid.action("configure").trigger()
 		}
 

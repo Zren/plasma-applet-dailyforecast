@@ -50,7 +50,7 @@ ColumnLayout {
 
     function handleLocationSearchDone(success, searchString) {
         if (!success) {
-            noSearchResultReport.text = i18nc("@info", "No weather stations found for '%1'", searchString);
+            noSearchResultReport.text = i18ndc("plasma_applet_org.kde.plasma.weather", "@info", "No weather stations found for '%1'", searchString);
             noSearchResultReport.visible = true;
         }
     }
@@ -95,7 +95,7 @@ ColumnLayout {
 
                 Layout.fillWidth: true
                 Layout.minimumWidth: implicitWidth
-                placeholderText: i18nc("@info:placeholder", "Enter location")
+                placeholderText: i18ndc("plasma_applet_org.kde.plasma.weather", "@info:placeholder", "Enter location")
                 onAccepted: {
                     searchLocation();
                 }
@@ -105,7 +105,7 @@ ColumnLayout {
                 id: serviceSelectionButton
 
                 iconName: "services"
-                tooltip: i18nc("@info:tooltip", "Select weather services providers")
+                tooltip: i18ndc("plasma_applet_org.kde.plasma.weather", "@info:tooltip", "Select weather services providers")
                 menu: serviceSelectionMenu
             }
 
@@ -125,7 +125,7 @@ ColumnLayout {
                 id: searchButton
 
                 iconName: "edit-find"
-                text: i18nc("@action:button", "Search")
+                text: i18ndc("plasma_applet_org.kde.plasma.weather", "@action:button", "Search")
                 enabled: canSearch
 
                 onClicked: {
