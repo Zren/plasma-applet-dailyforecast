@@ -92,8 +92,8 @@ Item {
 						id: currentTempLabel
 						anchors.centerIn: parent
 						readonly property var value: weatherData.currentTemp
-						readonly property bool hasValue: isNaN(value)
-						text: hasValue ? "" : i18n("%1°", value)
+						readonly property bool hasValue: !isNaN(value)
+						text: hasValue ? i18n("%1°", value) : ""
 						font.pointSize: -1
 						font.pixelSize: parent.height
 						font.family: forecastLayout.fontFamily
