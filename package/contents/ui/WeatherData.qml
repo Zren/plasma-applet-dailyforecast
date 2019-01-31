@@ -95,7 +95,7 @@ QtObject {
 	readonly property string todaysForecastLabel: todaysWeather[2]
 	readonly property var todaysTempHigh: todaysWeather[3]
 	readonly property var todaysTempLow: todaysWeather[4]
-	readonly property var todaysPopPrecent: todaysWeather[5]
+	readonly property var todaysPopPercent: todaysWeather[5]
 
 	property string currentConditionIconName: {
 		var conditionIconName = data["Condition Icon"] || todaysForecastIcon || null
