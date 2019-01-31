@@ -17,6 +17,7 @@ QtObject {
 
 	readonly property bool needsConfiguring: !weatherSource
 	readonly property bool hasData: !needsConfiguring && !connectingToSource
+	readonly property var data: weatherDataSource.currentData || {}
 
 	readonly property int updateInterval: 30
 	property bool connectingToSource: false
@@ -71,16 +72,24 @@ QtObject {
 		}
 	}
 
-	readonly property var todaysWeather: {
-		var data = weatherDataSource.currentData || {}
-		var value = data["Short Forecast Day 0"]
-		var tokens = value ? value.split("|") : ["", "weather-none-available", "", "", "", ""]
-		tokens[3] = parseInt(tokens[3], 10)
-		tokens[4] = parseInt(tokens[4], 10)
-		tokens[5] = parseInt(tokens[5], 10)
-		// console.log('todaysWeather', tokens)
+	function parseForecast(dayIndex) {
+		var key = "Short Forecast Day " + dayIndex
+		var value = data[key]
+		var tokens = ["", "weather-none-available", "", "", "", ""]
+		if (value) {
+			tokens = value.split("|")
+			if (tokens.length >= 6) {
+				tokens[3] = parseInt(tokens[3], 10)
+				tokens[4] = parseInt(tokens[4], 10)
+				tokens[5] = parseInt(tokens[5], 10)
+				return tokens
+			}
+		}
+		// console.log('parseForecast(' + dayIndex + ')', tokens)
 		return tokens
 	}
+
+	readonly property var todaysWeather: parseForecast(0) // currentData["Short Forecast Day 0"]
 	readonly property string todaysDayLabel: todaysWeather[0]
 	readonly property string todaysForecastIcon: todaysWeather[1]
 	readonly property string todaysForecastLabel: todaysWeather[2]
@@ -89,21 +98,51 @@ QtObject {
 	readonly property var todaysPopPrecent: todaysWeather[5]
 
 	property string currentConditionIconName: {
-		var data = weatherDataSource.currentData || {}
 		var conditionIconName = data["Condition Icon"] || todaysForecastIcon || null
 		return conditionIconName ? Util.existingWeatherIconName(conditionIconName) : "weather-none-available"
 	}
 
 	property string currentConditions: {
-		var data = weatherDataSource.currentData || {}
 		return data["Current Conditions"] || todaysForecastLabel || ""
 	}
 
 	property var currentTemp: {
-		var data = weatherDataSource.currentData || {}
 		return data["Temperature"] || NaN
 	}
-	
+
+	property var dailyForecastModel: {
+		var model = []
+
+		var forecastDayCount = parseInt((data && data["Total Weather Days"]) || "", 10)
+		if (isNaN(forecastDayCount) || forecastDayCount <= 0) {
+			return model
+		}
+
+		for (var i = 0; i < forecastDayCount; i++) {
+			if (typeof data["Short Forecast Day " + i] === "undefined") {
+				// "Total Weather Days" can be "7", however there might not be a "Short Forecast Day 6"
+				break
+			}
+			var tokens = parseForecast(i)
+			if (typeof data["Short Forecast Day " + i] === "undefined") {
+				// "Total Weather Days" can be "7", however there might not be a "Short Forecast Day 6"
+				break
+			}
+			var item = {
+				dayLabel: tokens[0],
+				forecastIcon: tokens[1],
+				forecastLabel: tokens[2],
+				tempHigh: tokens[3],
+				tempLow: tokens[4],
+				popPercent: tokens[5],
+			}
+			model.push(item)
+		}
+		return model
+	}
+
+
+
 	// property Timer testTimer: Timer {
 	// 	repeat: true
 	// 	running: true
@@ -116,5 +155,20 @@ QtObject {
 	// 	running: true
 	// 	interval: 1000
 	// 	onTriggered: plasmoid.configuration.source = 'envcan|weather|Toronto, ON'
+	// }
+
+	// readonly property bool needsConfiguring: false
+	// readonly property bool hasData: true
+	// readonly property var data: testData
+	// property var testData: {
+	// 	var data = {}
+	// 	data["Short Forecast Day 0"] = "31|weather-few-clouds|Mostly Sunny|17|10|"
+	// 	data["Short Forecast Day 1"] = "1|weather-clouds|Partly Sunny|21|18|"
+	// 	data["Short Forecast Day 2"] = "2|weather-clouds|Partly Sunny|37|29|"
+	// 	data["Short Forecast Day 3"] = "3|weather-overcast|Mostly Cloudy|41|33|"
+	// 	data["Short Forecast Day 4"] = "4|weather-showers|Slight Chance Rain|49|41|"
+	// 	data["Short Forecast Day 5"] = "5|weather-showers|Slight Chance Rain|55|38|"
+	// 	data["Total Weather Days"] = "7"
+	// 	return data
 	// }
 }
