@@ -20,12 +20,14 @@ Item {
 		readonly property bool isDesktopContainment: plasmoid.location == PlasmaCore.Types.Floating
 		Plasmoid.backgroundHints: isDesktopContainment && !plasmoid.configuration.showBackground ? PlasmaCore.Types.NoBackground : PlasmaCore.Types.DefaultBackground
 
-		implicitWidth: forecastLayout.implicitWidth
-		implicitHeight: forecastLayout.implicitHeight
+		property Item contentItem: weatherData.needsConfiguring ? configureButton : forecastLayout
+		implicitWidth: contentItem.implicitWidth
+		implicitHeight: contentItem.implicitHeight
 		Layout.minimumWidth: implicitWidth
 		Layout.minimumHeight: implicitHeight
 
 		PlasmaComponents.Button {
+			id: configureButton
 			anchors.centerIn: parent
 			visible: weatherData.needsConfiguring
 			text: i18ndc("plasma_applet_org.kde.plasma.weather", "@action:button", "Configure...")
