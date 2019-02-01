@@ -19,6 +19,7 @@ RowLayout {
 	property alias model: dayRepeater.model
 	readonly property real fadedOpacity: 0.7
 	readonly property int showNumDays: plasmoid.configuration.showNumDays
+	readonly property bool showDailyBackground: plasmoid.configuration.showDailyBackground
 
 	readonly property int minItemWidth: {
 		var minWidth = 0
@@ -38,8 +39,13 @@ RowLayout {
 		id: dayRepeater
 		model: weatherData.dailyForecastModel
 
-		ColumnLayout {
-			spacing: 0
+		Item {
+			id: dayItem
+			implicitWidth: dayItemLayout.implicitWidth + frame.margins.horizontal
+			implicitHeight: dayItemLayout.implicitHeight + frame.margins.vertical
+			Layout.fillWidth: true
+			Layout.fillHeight: true
+
 			visible: {
 				if (forecastLayout.showNumDays == 0) { // Show all
 					return true
@@ -47,6 +53,22 @@ RowLayout {
 					return (index+1) <= forecastLayout.showNumDays
 				}
 			}
+
+			PlasmaCore.FrameSvgItem {
+				id: frame
+				anchors.fill: parent
+				visible: forecastLayout.showDailyBackground
+				imagePath: visible ? "widgets/background" : ""
+			}
+
+		ColumnLayout {
+			id: dayItemLayout
+			anchors.fill: parent
+			anchors.leftMargin: frame.margins.left
+			anchors.rightMargin: frame.margins.right
+			anchors.topMargin: frame.margins.top
+			anchors.bottomMargin: frame.margins.bottom
+			spacing: 0
 
 			PlasmaComponents.Label {
 				text: modelData.dayLabel || ""
@@ -111,6 +133,8 @@ RowLayout {
 				Layout.fillWidth: true
 				Layout.fillHeight: true
 			}
+		}
+
 		}
 	}
 }

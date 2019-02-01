@@ -71,6 +71,11 @@ ConfigPage {
 			text: i18n("Desktop Widget: Show background")
 		}
 
+		ConfigCheckBox {
+			configKey: "showDailyBackground"
+			text: i18n("Show background around each day")
+		}
+
 		ConfigSpinBox {
 			Kirigami.FormData.label: i18n("Days Visible:")
 			configKey: "showNumDays"
