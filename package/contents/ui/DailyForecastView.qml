@@ -24,6 +24,9 @@ RowLayout {
 		var minWidth = 0
 		for (var i = 0; i < dayRepeater.count; i++) {
 			var item = dayRepeater.itemAt(i)
+			if (!item.visible) {
+				continue
+			}
 			if (i == 0 || item.width < minWidth) {
 				minWidth = item.width
 			}
