@@ -61,79 +61,79 @@ RowLayout {
 				imagePath: visible ? "widgets/background" : ""
 			}
 
-		ColumnLayout {
-			id: dayItemLayout
-			anchors.fill: parent
-			anchors.leftMargin: frame.margins.left
-			anchors.rightMargin: frame.margins.right
-			anchors.topMargin: frame.margins.top
-			anchors.bottomMargin: frame.margins.bottom
-			spacing: 0
-
-			PlasmaComponents.Label {
-				text: modelData.dayLabel || ""
-
-				opacity: forecastLayout.fadedOpacity
-
-				font.pointSize: -1
-				font.pixelSize: 14 * units.devicePixelRatio
-				font.family: forecastLayout.fontFamily
-				font.weight: forecastLayout.fontBold
-				Layout.alignment: Qt.AlignHCenter
-			}
-
-			PlasmaCore.IconItem {
-				Layout.fillWidth: true
-				Layout.fillHeight: true
-				Layout.maximumWidth: forecastLayout.minItemWidth
-				Layout.maximumHeight: forecastLayout.minItemWidth
-				Layout.alignment: Qt.AlignCenter
-				source: modelData.forecastIcon
-				roundToIconSize: false
-				width: parent.width * 1.2
-				height: parent.width * 1.2
-
-				// Rectangle { anchors.fill: parent; color: "transparent"; border.width: 1; border.color: "#f00"}
-			}
-
-			RowLayout {
-				Layout.alignment: Qt.AlignHCenter
-				spacing: units.smallSpacing
+			ColumnLayout {
+				id: dayItemLayout
+				anchors.fill: parent
+				anchors.leftMargin: frame.margins.left
+				anchors.rightMargin: frame.margins.right
+				anchors.topMargin: frame.margins.top
+				anchors.bottomMargin: frame.margins.bottom
+				spacing: 0
 
 				PlasmaComponents.Label {
-					readonly property var value: modelData.tempHigh
+					text: modelData.dayLabel || ""
 
-					readonly property bool hasValue: !isNaN(value)
-					text: hasValue ? i18n("%1°", value) : ""
-					visible: hasValue
-					font.pointSize: -1
-					font.pixelSize: 14 * units.devicePixelRatio
-					font.family: forecastLayout.fontFamily
-					font.weight: forecastLayout.fontBold
-					Layout.alignment: Qt.AlignHCenter
-				}
-
-				PlasmaComponents.Label {
-					readonly property var value: modelData.tempLow
 					opacity: forecastLayout.fadedOpacity
 
-					readonly property bool hasValue: !isNaN(value)
-					text: hasValue ? i18n("%1°", value) : ""
-					visible: hasValue
 					font.pointSize: -1
 					font.pixelSize: 14 * units.devicePixelRatio
 					font.family: forecastLayout.fontFamily
 					font.weight: forecastLayout.fontBold
 					Layout.alignment: Qt.AlignHCenter
 				}
-			}
 
-			// Top align contents
-			Item {
-				Layout.fillWidth: true
-				Layout.fillHeight: true
+				PlasmaCore.IconItem {
+					Layout.fillWidth: true
+					Layout.fillHeight: true
+					Layout.maximumWidth: forecastLayout.minItemWidth
+					Layout.maximumHeight: forecastLayout.minItemWidth
+					Layout.alignment: Qt.AlignCenter
+					source: modelData.forecastIcon
+					roundToIconSize: false
+					width: parent.width * 1.2
+					height: parent.width * 1.2
+
+					// Rectangle { anchors.fill: parent; color: "transparent"; border.width: 1; border.color: "#f00"}
+				}
+
+				RowLayout {
+					Layout.alignment: Qt.AlignHCenter
+					spacing: units.smallSpacing
+
+					PlasmaComponents.Label {
+						readonly property var value: modelData.tempHigh
+
+						readonly property bool hasValue: !isNaN(value)
+						text: hasValue ? i18n("%1°", value) : ""
+						visible: hasValue
+						font.pointSize: -1
+						font.pixelSize: 14 * units.devicePixelRatio
+						font.family: forecastLayout.fontFamily
+						font.weight: forecastLayout.fontBold
+						Layout.alignment: Qt.AlignHCenter
+					}
+
+					PlasmaComponents.Label {
+						readonly property var value: modelData.tempLow
+						opacity: forecastLayout.fadedOpacity
+
+						readonly property bool hasValue: !isNaN(value)
+						text: hasValue ? i18n("%1°", value) : ""
+						visible: hasValue
+						font.pointSize: -1
+						font.pixelSize: 14 * units.devicePixelRatio
+						font.family: forecastLayout.fontFamily
+						font.weight: forecastLayout.fontBold
+						Layout.alignment: Qt.AlignHCenter
+					}
+				}
+
+				// Top align contents
+				Item {
+					Layout.fillWidth: true
+					Layout.fillHeight: true
+				}
 			}
-		}
 
 		}
 	}
