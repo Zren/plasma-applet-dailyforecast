@@ -49,13 +49,16 @@ Item {
 
 				PlasmaComponents.Label {
 					readonly property var value: weatherData.todaysTempHigh
-					text: isNaN(value) ? "" : i18n("%1°", value)
-					
+					readonly property bool hasValue: !isNaN(value)
+					text: hasValue ? i18n("%1°", value) : ""
+					Layout.preferredWidth: hasValue ? implicitWidth : 0
 					font.pointSize: -1
 					font.pixelSize: 14 * units.devicePixelRatio
 					font.family: forecastLayout.fontFamily
 					font.weight: forecastLayout.fontBold
 					Layout.alignment: Qt.AlignHCenter
+
+					// Rectangle { anchors.fill: parent; color: "transparent"; border.width: 1; border.color: "#f00"}
 				}
 
 				Rectangle {
@@ -69,13 +72,16 @@ Item {
 
 				PlasmaComponents.Label {
 					readonly property var value: weatherData.todaysTempLow
-					text: isNaN(value) ? "" : i18n("%1°", value)
-
+					readonly property bool hasValue: !isNaN(value)
+					text: hasValue ? i18n("%1°", value) : ""
+					Layout.preferredWidth: hasValue ? implicitWidth : 0
 					font.pointSize: -1
 					font.pixelSize: 14 * units.devicePixelRatio
 					font.family: forecastLayout.fontFamily
 					font.weight: forecastLayout.fontBold
 					Layout.alignment: Qt.AlignHCenter
+
+					// Rectangle { anchors.fill: parent; color: "transparent"; border.width: 1; border.color: "#f00"}
 				}
 			}
 			ColumnLayout {
