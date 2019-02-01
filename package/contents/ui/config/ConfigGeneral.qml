@@ -77,12 +77,32 @@ ConfigPage {
 		}
 
 		ConfigSpinBox {
+			id: showNumDays
 			Kirigami.FormData.label: i18n("Days Visible:")
 			configKey: "showNumDays"
 			stepSize: 1
 			minimumValue: 0
 			maximumValue: 14
-			after: value === 0 ? i18n("Show all available data") : ""
+			
+			readonly property bool isShowingAll: showNumDays.value === 0
+
+			Rectangle {
+				id: showAllRect
+				radius: 2 * Kirigami.Units.devicePixelRatio
+				color: showNumDays.isShowingAll ? syspal.highlight : syspal.window
+				Behavior on color { ColorAnimation { duration: Kirigami.Units.longDuration } }
+				implicitWidth: showingAllLabel.implicitWidth + showingAllLabel.anchors.margins*2
+				implicitHeight: showingAllLabel.implicitHeight + showingAllLabel.anchors.margins*2
+
+				Label {
+					id: showingAllLabel
+					anchors.fill: parent
+					anchors.margins: 4 * Kirigami.Units.devicePixelRatio
+					color: showNumDays.isShowingAll ? syspal.highlightedText : syspal.text
+					Behavior on color { ColorAnimation { duration: Kirigami.Units.longDuration } }
+					text: i18n("0 = Show all available data")
+				}
+			}
 		}
 	}
 
