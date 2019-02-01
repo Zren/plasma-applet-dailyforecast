@@ -34,7 +34,7 @@ Item {
 			onClicked: plasmoid.action("configure").trigger()
 		}
 
-		CurrentWeatherView {
+		DailyForecastView {
 			id: forecastLayout
 		}
 

@@ -70,6 +70,15 @@ ConfigPage {
 			configKey: "showBackground"
 			text: i18n("Desktop Widget: Show background")
 		}
+
+		ConfigSpinBox {
+			Kirigami.FormData.label: i18n("Days Visible:")
+			configKey: "showNumDays"
+			suffix: i18ndc("plasma_applet_org.kde.plasma.weather", "@item:valuesuffix spacing to number + unit (minutes)", " min")
+			stepSize: 5
+			minimumValue: 30
+			maximumValue: 3600
+		}
 	}
 
 }

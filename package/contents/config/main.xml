@@ -19,6 +19,10 @@
 		<entry name="bold" type="bool">
 			<default>true</default>
 		</entry>
+		<entry name="showNumDays" type="int">
+			<label>0 will show all days available. 1 .. 14 will limit the number of days shown.</label>
+			<default>0</default>
+		</entry>
 	</group>
 
 </kcfg>
