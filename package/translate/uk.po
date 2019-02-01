@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: simpleweather\n"
-"Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-simpleweather\n"
-"POT-Creation-Date: 2019-01-30 12:28-0500\n"
+"Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-dailyforecast\n"
+"POT-Creation-Date: 2019-01-31 23:34-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,22 @@ msgstr ""
 msgid "Desktop Widget: Show background"
 msgstr ""
 
+#: ../contents/ui/config/ConfigGeneral.qml:76
+msgid "Show background around each day"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml:81
+msgid "Days Visible:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml:103
+msgid "0 = Show all available data"
+msgstr ""
+
+#: ../contents/ui/DailyForecastView.qml:107 ../contents/ui/DailyForecastView.qml:121
+msgid "%1°"
+msgstr "%1°"
+
 #: ../contents/ui/lib/AppletVersion.qml:41
 msgid "<b>Version:</b> %1"
 msgstr "<b>Версія:</b> %1"
@@ -35,7 +51,3 @@ msgstr "<b>Версія:</b> %1"
 msgctxt "Use default font"
 msgid "Default"
 msgstr ""
-
-#: ../contents/ui/main.qml:50 ../contents/ui/main.qml:70 ../contents/ui/main.qml:96
-msgid "%1°"
-msgstr "%1°"
