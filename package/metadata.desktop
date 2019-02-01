@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Simple Weather
+Name=Daily Forecast
 Comment=
 
 Type=Service
@@ -11,8 +11,8 @@ X-Plasma-MainScript=ui/main.qml
 
 X-KDE-PluginInfo-Author=Chris Holland
 X-KDE-PluginInfo-Email=zrenfire@gmail.com
-X-KDE-PluginInfo-Name=com.github.zren.simpleweather
-X-KDE-PluginInfo-Version=2
-X-KDE-PluginInfo-Website=https://github.com/Zren/plasma-applet-simpleweather
+X-KDE-PluginInfo-Name=com.github.zren.dailyforecast
+X-KDE-PluginInfo-Version=1
+X-KDE-PluginInfo-Website=https://github.com/Zren/plasma-applet-dailyforecast
 X-KDE-PluginInfo-Category=Environment and Weather
 X-KDE-PluginInfo-Depends=

@@ -1,10 +1,6 @@
-## v2 - January 30 2019
+## v1 - February 1 2019
 
-* Hide the min/max temp label if it's not populated (Eg: Env Canada).
-* Show an icon in place of the current temp when it's not populated (Eg: Wetter).
-* Added Dutch translation (Pull Request #1)
-* Fix selecting the default font after changing to another font.
-
-## v1 - January 29 2019
-
-* Implement a simple text weather forecast with min/max/current temps.
+* Forked from "Simple Weather" widget v2.
+* Display daily forecast icon + min/max temp.
+* Optionally show an individual background behind each day.
+* Optionally limit the number of days visible.
