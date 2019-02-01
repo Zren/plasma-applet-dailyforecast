@@ -74,10 +74,10 @@ ConfigPage {
 		ConfigSpinBox {
 			Kirigami.FormData.label: i18n("Days Visible:")
 			configKey: "showNumDays"
-			suffix: i18ndc("plasma_applet_org.kde.plasma.weather", "@item:valuesuffix spacing to number + unit (minutes)", " min")
-			stepSize: 5
-			minimumValue: 30
-			maximumValue: 3600
+			stepSize: 1
+			minimumValue: 0
+			maximumValue: 14
+			after: value === 0 ? i18n("Show all available data") : ""
 		}
 	}
 
