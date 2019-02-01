@@ -84,7 +84,7 @@ ConfigPage {
 			minimumValue: 0
 			maximumValue: 14
 			
-			readonly property bool isShowingAll: showNumDays.value === 0
+			readonly property bool isShowingAll: showNumDays.configValue == 0
 
 			Rectangle {
 				id: showAllRect
