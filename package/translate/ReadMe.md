@@ -41,7 +41,7 @@ Or if you know how to make a pull request
 | fr       |     3/9 |   33% |
 | id       |     3/9 |   33% |
 | ko       |     3/9 |   33% |
-| nl_NL    |     6/9 |   66% |
+| nl_NL    |     9/9 |  100% |
 | pl       |     3/9 |   33% |
 | pt_BR    |     3/9 |   33% |
 | ru       |     3/9 |   33% |
