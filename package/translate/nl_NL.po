@@ -42,8 +42,7 @@ msgstr "Aantal te tonen dagen:"
 msgid "0 = Show all available data"
 msgstr "0 = toon alle beschikbare dagen"
 
-#: ../contents/ui/DailyForecastView.qml:107
-#: ../contents/ui/DailyForecastView.qml:121
+#: ../contents/ui/DailyForecastView.qml:107 ../contents/ui/DailyForecastView.qml:121
 msgid "%1°"
 msgstr "%1°"
 
