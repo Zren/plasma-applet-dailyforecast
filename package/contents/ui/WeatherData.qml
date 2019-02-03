@@ -1,8 +1,10 @@
+// Version 3
+
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import org.kde.plasma.core 2.0 as PlasmaCore
 
-import org.kde.plasma.private.weather 1.0
+import org.kde.plasma.private.weather 1.0 as WeatherPlugin
 
 QtObject {
 	// readonly property string weatherSource: 'bbcukmet|weather|City of London, Greater London|2643741'
@@ -97,9 +99,23 @@ QtObject {
 	readonly property var todaysTempLow: todaysWeather[4]
 	readonly property var todaysPopPercent: todaysWeather[5]
 
+	function existingWeatherIconName(iconName) {
+		// The Util module is only available to other widgets in Plasma 5.13+.
+		// So we need to wrap this function to support Plasma 5.12 LTS.
+		// * https://github.com/KDE/kdeplasma-addons/blob/Plasma/5.12/applets/weather/plugin/plugin.cpp#L110
+		// * https://github.com/KDE/kdeplasma-addons/blob/Plasma/5.13/applets/weather/plugin/plugin.cpp#L110
+		if (false && typeof WeatherPlugin["Util"] !== "undefined") {
+			// Plasma 5.13+
+			return WeatherPlugin.Util.existingWeatherIconName(iconName)
+		} else {
+			// <= Plasma 5.12
+			return iconName
+		}
+	}
+
 	property string currentConditionIconName: {
 		var conditionIconName = data["Condition Icon"] || todaysForecastIcon || null
-		return conditionIconName ? Util.existingWeatherIconName(conditionIconName) : "weather-none-available"
+		return conditionIconName ? existingWeatherIconName(conditionIconName) : "weather-none-available"
 	}
 
 	property string currentConditions: {
@@ -130,7 +146,7 @@ QtObject {
 			}
 			var item = {
 				dayLabel: tokens[0],
-				forecastIcon: tokens[1],
+				forecastIcon: existingWeatherIconName(tokens[1]),
 				forecastLabel: tokens[2],
 				tempHigh: tokens[3],
 				tempLow: tokens[4],
