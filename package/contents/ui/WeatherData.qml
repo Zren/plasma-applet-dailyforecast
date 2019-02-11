@@ -91,13 +91,26 @@ QtObject {
 		return tokens
 	}
 
+	function parseForecastLabel(tokens) {
+		var condition = tokens[2]
+		var probability = tokens[5] // popPercent
+		if (probability !== "N/U" && probability !== "N/A" && !!probability) {
+			return i18ndc("plasma_applet_org.kde.plasma.weather",
+				"certain weather condition (probability percentage)",
+				"%1 (%2 %)", condition, probability)
+		} else {
+			return condition
+		}
+	}
+
 	readonly property var todaysWeather: parseForecast(0) // currentData["Short Forecast Day 0"]
 	readonly property string todaysDayLabel: todaysWeather[0]
 	readonly property string todaysForecastIcon: todaysWeather[1]
-	readonly property string todaysForecastLabel: todaysWeather[2]
+	readonly property string todaysCondition: todaysWeather[2]
 	readonly property var todaysTempHigh: todaysWeather[3]
 	readonly property var todaysTempLow: todaysWeather[4]
 	readonly property var todaysPopPercent: todaysWeather[5]
+	readonly property string todaysForecastLabel: parseForecastLabel(todaysWeather)
 
 	// The Util module is only available to other widgets in Plasma 5.13+.
 	// So we need to wrap this function to support Plasma 5.12 LTS.
@@ -156,10 +169,11 @@ QtObject {
 			var item = {
 				dayLabel: tokens[0],
 				forecastIcon: existingWeatherIconName(tokens[1]),
-				forecastLabel: tokens[2],
+				condition: tokens[2],
 				tempHigh: tokens[3],
 				tempLow: tokens[4],
 				popPercent: tokens[5],
+				forecastLabel: parseForecastLabel(tokens),
 			}
 			model.push(item)
 		}
