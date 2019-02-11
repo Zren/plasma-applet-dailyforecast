@@ -180,6 +180,24 @@ QtObject {
 		return model
 	}
 
+	function parseNoticeList(totalKey, itemKey) {
+		var model = []
+		var noticesCount = parseInt(data["Total "+totalKey+" Issued"] || "", 10) // data["Total Warnings Issued"]
+		if (isNaN(noticesCount)) {
+			noticesCount = 0
+		}
+		for (var i = 0; i < noticesCount; ++i) {
+			var notice = {
+				"description": data[itemKey+" Description "+i], // data["Warning Description 0"]
+				"info": data[itemKey+" Info "+i], // data["Warning Info 0"]
+			}
+			model.push(notice)
+		}
+		// console.log(totalKey, JSON.stringify(model, null, '  '))
+		return model
+	}
+	property var warningsModel: parseNoticeList("Warnings", "Warning")
+	property var watchesModel: parseNoticeList("Watches", "Watch")
 
 
 	// property Timer testTimer: Timer {
