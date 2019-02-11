@@ -191,7 +191,7 @@ QtObject {
 		for (var i = 0; i < noticesCount; ++i) {
 			var notice = {
 				"description": data[itemKey+" Description "+i], // data["Warning Description 0"]
-				"info": data[itemKey+" Info "+i], // data["Warning Info 0"]
+				"url": data[itemKey+" Info "+i], // data["Warning Info 0"]
 			}
 			model.push(notice)
 		}
