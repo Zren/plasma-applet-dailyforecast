@@ -1,4 +1,4 @@
-// Version 3
+// Version 4
 
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
@@ -99,17 +99,26 @@ QtObject {
 	readonly property var todaysTempLow: todaysWeather[4]
 	readonly property var todaysPopPercent: todaysWeather[5]
 
+	// The Util module is only available to other widgets in Plasma 5.13+.
+	// So we need to wrap this function to support Plasma 5.12 LTS.
+	// * https://github.com/KDE/kdeplasma-addons/blob/Plasma/5.12/applets/weather/plugin/plugin.cpp#L110
+	// * https://github.com/KDE/kdeplasma-addons/blob/Plasma/5.13/applets/weather/plugin/plugin.cpp#L110
 	function existingWeatherIconName(iconName) {
-		// The Util module is only available to other widgets in Plasma 5.13+.
-		// So we need to wrap this function to support Plasma 5.12 LTS.
-		// * https://github.com/KDE/kdeplasma-addons/blob/Plasma/5.12/applets/weather/plugin/plugin.cpp#L110
-		// * https://github.com/KDE/kdeplasma-addons/blob/Plasma/5.13/applets/weather/plugin/plugin.cpp#L110
-		if (false && typeof WeatherPlugin["Util"] !== "undefined") {
+		if (typeof WeatherPlugin["Util"] !== "undefined") {
 			// Plasma 5.13+
 			return WeatherPlugin.Util.existingWeatherIconName(iconName)
 		} else {
 			// <= Plasma 5.12
 			return iconName
+		}
+	}
+	function percentToDisplayString(percent) {
+		if (typeof WeatherPlugin["Util"] !== "undefined") {
+			// Plasma 5.13+
+			return WeatherPlugin.Util.percentToDisplayString(percent)
+		} else {
+			// <= Plasma 5.12
+			return percent + ' %'
 		}
 	}
 
