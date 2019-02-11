@@ -36,6 +36,7 @@ Item {
 
 		DailyForecastView {
 			id: forecastLayout
+			anchors.fill: parent
 		}
 
 	}

@@ -8,7 +8,6 @@ import org.kde.plasma.private.weather 1.0 as WeatherPlugin
 
 RowLayout {
 	id: forecastLayout
-	anchors.fill: parent
 	spacing: units.smallSpacing
 	opacity: weatherData.hasData ? 1 : 0
 	Behavior on opacity { NumberAnimation { duration: 1000 } }
