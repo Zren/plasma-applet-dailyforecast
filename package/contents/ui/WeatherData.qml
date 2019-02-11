@@ -180,6 +180,8 @@ QtObject {
 		return model
 	}
 
+	// To find a specific to test warnings, check the EnvCan national map at:
+	// https://weather.gc.ca/warnings/index_e.html
 	function parseNoticeList(totalKey, itemKey) {
 		var model = []
 		var noticesCount = parseInt(data["Total "+totalKey+" Issued"] || "", 10) // data["Total Warnings Issued"]
