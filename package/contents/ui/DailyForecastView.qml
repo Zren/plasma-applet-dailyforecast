@@ -135,6 +135,11 @@ RowLayout {
 				}
 			}
 
+			PlasmaCore.ToolTipArea {
+				anchors.fill: parent
+				mainText: modelData.forecastLabel
+			}
+
 		}
 	}
 }
