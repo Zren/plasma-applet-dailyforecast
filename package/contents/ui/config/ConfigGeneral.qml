@@ -104,6 +104,11 @@ ConfigPage {
 				}
 			}
 		}
+
+		ConfigCheckBox {
+			configKey: "showWarnings"
+			text: i18n("Show weather warnings")
+		}
 	}
 
 }
