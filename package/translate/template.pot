@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dailyforecast \n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-dailyforecast\n"
-"POT-Creation-Date: 2019-01-31 23:34-0500\n"
+"POT-Creation-Date: 2019-02-12 14:17-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,7 +41,11 @@ msgstr ""
 msgid "0 = Show all available data"
 msgstr ""
 
-#: ../contents/ui/DailyForecastView.qml:107 ../contents/ui/DailyForecastView.qml:121
+#: ../contents/ui/config/ConfigGeneral.qml:110
+msgid "Show weather warnings"
+msgstr ""
+
+#: ../contents/ui/DailyForecastView.qml:114 ../contents/ui/DailyForecastView.qml:128
 msgid "%1°"
 msgstr ""
 
