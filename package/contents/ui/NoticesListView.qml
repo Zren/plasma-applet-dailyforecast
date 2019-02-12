@@ -80,6 +80,7 @@ ColumnLayout {
 				anchors.leftMargin: noticeItem.horPadding
 				anchors.right: parent.right
 				anchors.rightMargin: noticeItem.horPadding
+				elide: Text.ElideRight
 			}
 		}
 	}
