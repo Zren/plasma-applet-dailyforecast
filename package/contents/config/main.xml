@@ -26,6 +26,9 @@
 			<label>0 will show all days available. 1 .. 14 will limit the number of days shown.</label>
 			<default>0</default>
 		</entry>
+		<entry name="showWarnings" type="bool">
+			<default>true</default>
+		</entry>
 	</group>
 
 </kcfg>
