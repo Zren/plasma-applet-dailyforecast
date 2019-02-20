@@ -11,41 +11,13 @@ ConfigPage {
 	id: page
 	showAppletVersion: true
 
-	WeatherStationPickerDialog {
-		id: stationPicker
-
-		onAccepted: {
-			plasmoid.configuration.source = source
-		}
-	}
-
 	Kirigami.FormLayout {
 		Layout.fillWidth: true
 
-		RowLayout {
-			Kirigami.FormData.label: i18ndc("plasma_applet_org.kde.plasma.weather", "@label", "Location:")
-			Label {
-				id: locationDisplay
-				Layout.fillWidth: true
-				elide: Text.ElideRight
-
-				text: {
-					var sourceDetails = plasmoid.configuration.source.split('|')
-					if (sourceDetails.length > 2) {
-						return i18ndc("plasma_applet_org.kde.plasma.weather",
-							"A weather station location and the weather service it comes from", "%1 (%2)",
-							sourceDetails[2], sourceDetails[0])
-					}
-					return i18ndc("plasma_applet_org.kde.plasma.weather", "no weather station", "-")
-				}
-			}
-			Button {
-				id: selectButton
-				iconName: "edit-find"
-				text: i18ndc("plasma_applet_org.kde.plasma.weather", "@action:button", "Select")
-				onClicked: stationPicker.visible = true
-			}
+		ConfigWeatherStationPicker {
+			configKey: 'source'
 		}
+
 		ConfigSpinBox {
 			Kirigami.FormData.label: i18ndc("plasma_applet_org.kde.plasma.weather", "@label:spinbox", "Update every:")
 			configKey: "updateInterval"
