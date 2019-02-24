@@ -34,9 +34,29 @@ Item {
 			onClicked: plasmoid.action("configure").trigger()
 		}
 
-		DailyForecastView {
-			id: forecastLayout
+		ColumnLayout {
 			anchors.fill: parent
+			spacing: units.smallSpacing
+
+			DailyForecastView {
+				id: forecastLayout
+			}
+
+			NoticesListView {
+				Layout.fillWidth: true
+				model: weatherData.watchesModel
+				readonly property bool showWatches: plasmoid.configuration.showWarnings
+				visible: showWatches && model.length > 0
+				state: "Watches"
+			}
+
+			NoticesListView {
+				Layout.fillWidth: true
+				model: weatherData.warningsModel
+				readonly property bool showWarnings: plasmoid.configuration.showWarnings
+				visible: showWarnings && model.length > 0
+				state: "Warnings"
+			}
 		}
 
 	}

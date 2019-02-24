@@ -6,7 +6,7 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 
 import org.kde.plasma.private.weather 1.0 as WeatherPlugin
 
-ColumnLayout {
+RowLayout {
 	id: forecastLayout
 	spacing: units.smallSpacing
 	opacity: weatherData.hasData ? 1 : 0
@@ -19,8 +19,6 @@ ColumnLayout {
 	readonly property real fadedOpacity: 0.7
 	readonly property int showNumDays: plasmoid.configuration.showNumDays
 	readonly property bool showDailyBackground: plasmoid.configuration.showDailyBackground
-	readonly property bool showWatches: plasmoid.configuration.showWarnings
-	readonly property bool showWarnings: plasmoid.configuration.showWarnings
 
 	readonly property int minItemWidth: {
 		var minWidth = 0
@@ -35,12 +33,6 @@ ColumnLayout {
 		}
 		return minWidth
 	}
-
-
-	RowLayout {
-		Layout.fillWidth: true
-		Layout.fillHeight: true
-		spacing: units.smallSpacing
 
 	Repeater {
 		id: dayRepeater
@@ -150,19 +142,4 @@ ColumnLayout {
 		}
 	}
 
-	}
-
-	NoticesListView {
-		Layout.fillWidth: true
-		model: weatherData.watchesModel
-		visible: forecastLayout.showWatches && model.length > 0
-		state: "Watches"
-	}
-
-	NoticesListView {
-		Layout.fillWidth: true
-		model: weatherData.warningsModel
-		visible: forecastLayout.showWarnings && model.length > 0
-		state: "Warnings"
-	}
 }
