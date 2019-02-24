@@ -7,7 +7,7 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.private.weather 1.0 as WeatherPlugin
 
 RowLayout {
-	id: forecastLayout
+	id: dailyForecastView
 	spacing: units.smallSpacing
 	opacity: weatherData.hasData ? 1 : 0
 	Behavior on opacity { NumberAnimation { duration: 1000 } }
@@ -46,17 +46,17 @@ RowLayout {
 			Layout.fillHeight: true
 
 			visible: {
-				if (forecastLayout.showNumDays == 0) { // Show all
+				if (dailyForecastView.showNumDays == 0) { // Show all
 					return true
 				} else {
-					return (index+1) <= forecastLayout.showNumDays
+					return (index+1) <= dailyForecastView.showNumDays
 				}
 			}
 
 			PlasmaCore.FrameSvgItem {
 				id: frame
 				anchors.fill: parent
-				visible: forecastLayout.showDailyBackground
+				visible: dailyForecastView.showDailyBackground
 				imagePath: visible ? "widgets/background" : ""
 			}
 
@@ -72,20 +72,20 @@ RowLayout {
 				PlasmaComponents.Label {
 					text: modelData.dayLabel || ""
 
-					opacity: forecastLayout.fadedOpacity
+					opacity: dailyForecastView.fadedOpacity
 
 					font.pointSize: -1
 					font.pixelSize: 14 * units.devicePixelRatio
-					font.family: forecastLayout.fontFamily
-					font.weight: forecastLayout.fontBold
+					font.family: dailyForecastView.fontFamily
+					font.weight: dailyForecastView.fontBold
 					Layout.alignment: Qt.AlignHCenter
 				}
 
 				PlasmaCore.IconItem {
 					Layout.fillWidth: true
 					Layout.fillHeight: true
-					Layout.maximumWidth: forecastLayout.minItemWidth
-					Layout.maximumHeight: forecastLayout.minItemWidth
+					Layout.maximumWidth: dailyForecastView.minItemWidth
+					Layout.maximumHeight: dailyForecastView.minItemWidth
 					Layout.alignment: Qt.AlignCenter
 					source: modelData.forecastIcon
 					roundToIconSize: false
@@ -107,22 +107,22 @@ RowLayout {
 						visible: hasValue
 						font.pointSize: -1
 						font.pixelSize: 14 * units.devicePixelRatio
-						font.family: forecastLayout.fontFamily
-						font.weight: forecastLayout.fontBold
+						font.family: dailyForecastView.fontFamily
+						font.weight: dailyForecastView.fontBold
 						Layout.alignment: Qt.AlignHCenter
 					}
 
 					PlasmaComponents.Label {
 						readonly property var value: modelData.tempLow
-						opacity: forecastLayout.fadedOpacity
+						opacity: dailyForecastView.fadedOpacity
 
 						readonly property bool hasValue: !isNaN(value)
 						text: hasValue ? i18n("%1°", value) : ""
 						visible: hasValue
 						font.pointSize: -1
 						font.pixelSize: 14 * units.devicePixelRatio
-						font.family: forecastLayout.fontFamily
-						font.weight: forecastLayout.fontBold
+						font.family: dailyForecastView.fontFamily
+						font.weight: dailyForecastView.fontBold
 						Layout.alignment: Qt.AlignHCenter
 					}
 				}

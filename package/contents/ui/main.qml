@@ -35,11 +35,12 @@ Item {
 		}
 
 		ColumnLayout {
+			id: forecastLayout
 			anchors.fill: parent
 			spacing: units.smallSpacing
 
 			DailyForecastView {
-				id: forecastLayout
+				id: dailyForecastView
 			}
 
 			NoticesListView {
