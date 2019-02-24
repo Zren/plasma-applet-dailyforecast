@@ -1,3 +1,5 @@
+// Version 1
+
 import QtQuick 2.7
 import QtQuick.Layouts 1.1
 import org.kde.plasma.plasmoid 2.0
