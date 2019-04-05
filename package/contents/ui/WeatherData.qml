@@ -1,4 +1,4 @@
-// Version 4
+// Version 5
 
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
@@ -136,7 +136,10 @@ QtObject {
 	}
 
 	property string currentConditionIconName: {
-		var conditionIconName = data["Condition Icon"] || todaysForecastIcon || null
+		var conditionIconName = data["Condition Icon"]
+		if (!conditionIconName || conditionIconName == "weather-none-available") {
+			conditionIconName = todaysForecastIcon
+		}
 		return conditionIconName ? existingWeatherIconName(conditionIconName) : "weather-none-available"
 	}
 
