@@ -20,6 +20,7 @@ RowLayout {
 	readonly property int showNumDays: plasmoid.configuration.showNumDays
 	readonly property bool showDailyBackground: plasmoid.configuration.showDailyBackground
 
+	// Note: minItemWidth causes a binding loop
 	readonly property int minItemWidth: {
 		var minWidth = 0
 		for (var i = 0; i < dayRepeater.count; i++) {
