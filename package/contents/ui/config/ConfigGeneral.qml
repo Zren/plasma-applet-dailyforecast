@@ -27,15 +27,9 @@ ConfigPage {
 			maximumValue: 3600
 		}
 
-
-		RowLayout {
-			Kirigami.FormData.label: i18n("Font Family:")
-			ConfigFontFamily {
-				configKey: 'fontFamily'
-			}
-			ConfigTextFormat {
-				boldConfigKey: 'bold'
-			}
+		ConfigCheckBox {
+			configKey: "showWarnings"
+			text: i18n("Show weather warnings")
 		}
 
 		ConfigCheckBox {
@@ -77,12 +71,32 @@ ConfigPage {
 			}
 		}
 
-		ConfigCheckBox {
-			configKey: "showWarnings"
-			text: i18n("Show weather warnings")
+		Kirigami.Separator {
+			Kirigami.FormData.isSection: true
 		}
 
-		
+		RowLayout {
+			Kirigami.FormData.label: i18n("Font Family:")
+			ConfigFontFamily {
+				configKey: 'fontFamily'
+			}
+			ConfigTextFormat {
+				boldConfigKey: 'bold'
+			}
+		}
+
+		ConfigSpinBox {
+			Kirigami.FormData.label: i18n("Date:")
+			configKey: "dateFontSize"
+			suffix: i18nc("font size suffix", "pt")
+		}
+
+		ConfigSpinBox {
+			Kirigami.FormData.label: i18n("Min/Max Temp:")
+			configKey: "minMaxFontSize"
+			suffix: i18nc("font size suffix", "pt")
+		}
+
 		Kirigami.Separator {
 			Kirigami.FormData.isSection: true
 		}

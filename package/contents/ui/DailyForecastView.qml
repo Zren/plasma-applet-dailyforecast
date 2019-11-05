@@ -19,7 +19,10 @@ RowLayout {
 
 	readonly property string fontFamily: plasmoid.configuration.fontFamily || theme.defaultFont.family
 	readonly property var fontBold: plasmoid.configuration.bold ? Font.Bold : Font.Normal
-	
+
+	readonly property int dateFontSize: plasmoid.configuration.dateFontSize * units.devicePixelRatio
+	readonly property int minMaxFontSize: plasmoid.configuration.minMaxFontSize * units.devicePixelRatio
+
 	property alias model: dayRepeater.model
 	readonly property real fadedOpacity: 0.7
 	readonly property int showNumDays: plasmoid.configuration.showNumDays
@@ -81,7 +84,7 @@ RowLayout {
 					opacity: dailyForecastView.fadedOpacity
 
 					font.pointSize: -1
-					font.pixelSize: 14 * units.devicePixelRatio
+					font.pixelSize: dailyForecastView.dateFontSize
 					font.family: dailyForecastView.fontFamily
 					font.weight: dailyForecastView.fontBold
 					color: dailyForecastView.textColor
@@ -115,7 +118,7 @@ RowLayout {
 						text: hasValue ? i18n("%1°", value) : ""
 						visible: hasValue
 						font.pointSize: -1
-						font.pixelSize: 14 * units.devicePixelRatio
+						font.pixelSize: dailyForecastView.minMaxFontSize
 						font.family: dailyForecastView.fontFamily
 						font.weight: dailyForecastView.fontBold
 						color: dailyForecastView.textColor
@@ -132,7 +135,7 @@ RowLayout {
 						text: hasValue ? i18n("%1°", value) : ""
 						visible: hasValue
 						font.pointSize: -1
-						font.pixelSize: 14 * units.devicePixelRatio
+						font.pixelSize: dailyForecastView.minMaxFontSize
 						font.family: dailyForecastView.fontFamily
 						font.weight: dailyForecastView.fontBold
 						color: dailyForecastView.textColor

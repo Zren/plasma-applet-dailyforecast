@@ -29,6 +29,12 @@
 		<entry name="showWarnings" type="bool">
 			<default>false</default>
 		</entry>
+		<entry name="dateFontSize" type="int">
+			<default>14</default>
+		</entry>
+		<entry name="minMaxFontSize" type="int">
+			<default>14</default>
+		</entry>
 		<entry name="textColor" type="string">
 			<default></default>
 		</entry>
