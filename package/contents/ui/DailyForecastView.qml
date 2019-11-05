@@ -12,6 +12,11 @@ RowLayout {
 	opacity: weatherData.hasData ? 1 : 0
 	Behavior on opacity { NumberAnimation { duration: 1000 } }
 
+	readonly property color textColor: plasmoid.configuration.textColor || theme.textColor
+	readonly property color outlineColor: plasmoid.configuration.outlineColor || theme.backgroundColor
+
+	readonly property bool showOutline: plasmoid.configuration.showOutline
+
 	readonly property string fontFamily: plasmoid.configuration.fontFamily || theme.defaultFont.family
 	readonly property var fontBold: plasmoid.configuration.bold ? Font.Bold : Font.Normal
 	
@@ -79,6 +84,9 @@ RowLayout {
 					font.pixelSize: 14 * units.devicePixelRatio
 					font.family: dailyForecastView.fontFamily
 					font.weight: dailyForecastView.fontBold
+					color: dailyForecastView.textColor
+					style: dailyForecastView.showOutline ? Text.Outline : Text.Normal
+					styleColor: dailyForecastView.outlineColor
 					Layout.alignment: Qt.AlignHCenter
 				}
 
@@ -110,6 +118,9 @@ RowLayout {
 						font.pixelSize: 14 * units.devicePixelRatio
 						font.family: dailyForecastView.fontFamily
 						font.weight: dailyForecastView.fontBold
+						color: dailyForecastView.textColor
+						style: dailyForecastView.showOutline ? Text.Outline : Text.Normal
+						styleColor: dailyForecastView.outlineColor
 						Layout.alignment: Qt.AlignHCenter
 					}
 
@@ -124,6 +135,9 @@ RowLayout {
 						font.pixelSize: 14 * units.devicePixelRatio
 						font.family: dailyForecastView.fontFamily
 						font.weight: dailyForecastView.fontBold
+						color: dailyForecastView.textColor
+						style: dailyForecastView.showOutline ? Text.Outline : Text.Normal
+						styleColor: dailyForecastView.outlineColor
 						Layout.alignment: Qt.AlignHCenter
 					}
 				}
