@@ -7,8 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: simpleweather\n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-dailyforecast\n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2019-02-12 14:17-0500\n"
 "PO-Revision-Date: 2019-02-12 21:40+0100\n"
+=======
+"POT-Creation-Date: 2019-11-05 17:53-0500\n"
+"PO-Revision-Date: 2019-02-01 14:41+0100\n"
+>>>>>>> Run i18n merge
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
 "Language: nl_NL\n"
@@ -22,23 +27,23 @@ msgstr ""
 msgid "General"
 msgstr "Algemeen"
 
-#: ../contents/ui/config/ConfigGeneral.qml:60
-msgid "Font Family:"
-msgstr "Lettertype:"
+#: ../contents/ui/config/ConfigGeneral.qml:32
+msgid "Show weather warnings"
+msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:71
+#: ../contents/ui/config/ConfigGeneral.qml:37
 msgid "Desktop Widget: Show background"
 msgstr "Bureaubladwidget: achtergrond tonen"
 
-#: ../contents/ui/config/ConfigGeneral.qml:76
+#: ../contents/ui/config/ConfigGeneral.qml:42
 msgid "Show background around each day"
 msgstr "Dagen voorzien van achtergrondkleur"
 
-#: ../contents/ui/config/ConfigGeneral.qml:81
+#: ../contents/ui/config/ConfigGeneral.qml:47
 msgid "Days Visible:"
 msgstr "Aantal te tonen dagen:"
 
-#: ../contents/ui/config/ConfigGeneral.qml:103
+#: ../contents/ui/config/ConfigGeneral.qml:69
 msgid "0 = Show all available data"
 msgstr "0 = toon alle beschikbare dagen"
 
@@ -46,8 +51,32 @@ msgstr "0 = toon alle beschikbare dagen"
 msgid "Show weather warnings"
 msgstr "Weerwaarschuwingen tonen"
 
-#: ../contents/ui/DailyForecastView.qml:114
-#: ../contents/ui/DailyForecastView.qml:128
+#: ../contents/ui/config/ConfigGeneral.qml:79
+msgid "Font Family:"
+msgstr "Lettertype:"
+
+#: ../contents/ui/config/ConfigGeneral.qml:89
+msgid "Date:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml:91 ../contents/ui/config/ConfigGeneral.qml:97
+msgctxt "font size suffix"
+msgid "pt"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml:95
+msgid "Min/Max Temp:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml:105
+msgid "Text:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml:112
+msgid "Outline:"
+msgstr ""
+
+#: .../contents/ui/DailyForecastView.qml:118 ../contents/ui/DailyForecastView.qml:135
 msgid "%1°"
 msgstr "%1°"
 

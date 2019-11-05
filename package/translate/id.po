@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: simpleweather\n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-dailyforecast\n"
-"POT-Creation-Date: 2019-02-12 14:17-0500\n"
+"POT-Creation-Date: 2019-11-05 17:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,31 +19,52 @@ msgstr ""
 msgid "General"
 msgstr "Setelan Umum"
 
-#: ../contents/ui/config/ConfigGeneral.qml:60
-msgid "Font Family:"
-msgstr ""
-
-#: ../contents/ui/config/ConfigGeneral.qml:71
-msgid "Desktop Widget: Show background"
-msgstr ""
-
-#: ../contents/ui/config/ConfigGeneral.qml:76
-msgid "Show background around each day"
-msgstr ""
-
-#: ../contents/ui/config/ConfigGeneral.qml:81
-msgid "Days Visible:"
-msgstr ""
-
-#: ../contents/ui/config/ConfigGeneral.qml:103
-msgid "0 = Show all available data"
-msgstr ""
-
-#: ../contents/ui/config/ConfigGeneral.qml:110
+#: ../contents/ui/config/ConfigGeneral.qml:32
 msgid "Show weather warnings"
 msgstr ""
 
-#: ../contents/ui/DailyForecastView.qml:114 ../contents/ui/DailyForecastView.qml:128
+#: ../contents/ui/config/ConfigGeneral.qml:37
+msgid "Desktop Widget: Show background"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml:42
+msgid "Show background around each day"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml:47
+msgid "Days Visible:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml:69
+msgid "0 = Show all available data"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml:79
+msgid "Font Family:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml:89
+msgid "Date:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml:91 ../contents/ui/config/ConfigGeneral.qml:97
+msgctxt "font size suffix"
+msgid "pt"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml:95
+msgid "Min/Max Temp:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml:105
+msgid "Text:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml:112
+msgid "Outline:"
+msgstr ""
+
+#: ../contents/ui/DailyForecastView.qml:118 ../contents/ui/DailyForecastView.qml:135
 msgid "%1°"
 msgstr "%1°"
 
