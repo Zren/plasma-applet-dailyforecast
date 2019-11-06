@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: simpleweather\n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-dailyforecast\n"
 "POT-Creation-Date: 2019-02-12 14:17-0500\n"
-"PO-Revision-Date: 2019-02-01 14:41+0100\n"
+"PO-Revision-Date: 2019-02-12 21:40+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
 "Language: nl_NL\n"
@@ -32,7 +32,7 @@ msgstr "Bureaubladwidget: achtergrond tonen"
 
 #: ../contents/ui/config/ConfigGeneral.qml:76
 msgid "Show background around each day"
-msgstr "Achtergrond tonen achter elke dag"
+msgstr "Dagen voorzien van achtergrondkleur"
 
 #: ../contents/ui/config/ConfigGeneral.qml:81
 msgid "Days Visible:"
@@ -44,9 +44,10 @@ msgstr "0 = toon alle beschikbare dagen"
 
 #: ../contents/ui/config/ConfigGeneral.qml:110
 msgid "Show weather warnings"
-msgstr ""
+msgstr "Weerwaarschuwingen tonen"
 
-#: ../contents/ui/DailyForecastView.qml:114 ../contents/ui/DailyForecastView.qml:128
+#: ../contents/ui/DailyForecastView.qml:114
+#: ../contents/ui/DailyForecastView.qml:128
 msgid "%1°"
 msgstr "%1°"
 
