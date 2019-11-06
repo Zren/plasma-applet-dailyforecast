@@ -29,7 +29,7 @@ msgstr "Algemeen"
 
 #: ../contents/ui/config/ConfigGeneral.qml:32
 msgid "Show weather warnings"
-msgstr ""
+msgstr "Weerwaarschuwingen tonen"
 
 #: ../contents/ui/config/ConfigGeneral.qml:37
 msgid "Desktop Widget: Show background"
@@ -59,24 +59,26 @@ msgstr "Lettertype:"
 msgid "Date:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:91 ../contents/ui/config/ConfigGeneral.qml:97
+#: ../contents/ui/config/ConfigGeneral.qml:91
+#: ../contents/ui/config/ConfigGeneral.qml:97
 msgctxt "font size suffix"
 msgid "pt"
-msgstr ""
+msgstr "pt"
 
 #: ../contents/ui/config/ConfigGeneral.qml:95
 msgid "Min/Max Temp:"
-msgstr ""
+msgstr "Min./Max. temp.:"
 
 #: ../contents/ui/config/ConfigGeneral.qml:105
 msgid "Text:"
-msgstr ""
+msgstr "Tekst:"
 
 #: ../contents/ui/config/ConfigGeneral.qml:112
 msgid "Outline:"
-msgstr ""
+msgstr "Contour:"
 
-#: .../contents/ui/DailyForecastView.qml:118 ../contents/ui/DailyForecastView.qml:135
+#: ../contents/ui/DailyForecastView.qml:118
+#: ../contents/ui/DailyForecastView.qml:135
 msgid "%1°"
 msgstr "%1°"
 

@@ -25,7 +25,7 @@ msgstr ""
 
 #: ../contents/ui/config/ConfigGeneral.qml:37
 msgid "Desktop Widget: Show background"
-msgstr ""
+msgstr "Widget de bureau: Afficher l'arrière plan"
 
 #: ../contents/ui/config/ConfigGeneral.qml:42
 msgid "Show background around each day"

@@ -21,11 +21,11 @@ msgstr "General"
 
 #: ../contents/ui/config/ConfigGeneral.qml:32
 msgid "Show weather warnings"
-msgstr ""
+msgstr "Mostrar alertas climatológicas"
 
 #: ../contents/ui/config/ConfigGeneral.qml:37
 msgid "Desktop Widget: Show background"
-msgstr ""
+msgstr "Widget de escritorio: mostrar fondo"
 
 #: ../contents/ui/config/ConfigGeneral.qml:42
 msgid "Show background around each day"
@@ -41,7 +41,7 @@ msgstr ""
 
 #: ../contents/ui/config/ConfigGeneral.qml:79
 msgid "Font Family:"
-msgstr ""
+msgstr "Familia tipográfica:"
 
 #: ../contents/ui/config/ConfigGeneral.qml:89
 msgid "Date:"
@@ -50,19 +50,19 @@ msgstr ""
 #: ../contents/ui/config/ConfigGeneral.qml:91 ../contents/ui/config/ConfigGeneral.qml:97
 msgctxt "font size suffix"
 msgid "pt"
-msgstr ""
+msgstr "pt"
 
 #: ../contents/ui/config/ConfigGeneral.qml:95
 msgid "Min/Max Temp:"
-msgstr ""
+msgstr "Temperatura mín/máx:"
 
 #: ../contents/ui/config/ConfigGeneral.qml:105
 msgid "Text:"
-msgstr ""
+msgstr "Texto:"
 
 #: ../contents/ui/config/ConfigGeneral.qml:112
 msgid "Outline:"
-msgstr ""
+msgstr "Contorno:"
 
 #: ../contents/ui/DailyForecastView.qml:118 ../contents/ui/DailyForecastView.qml:135
 msgid "%1°"
@@ -75,4 +75,4 @@ msgstr "<b>Versión:</b> %1"
 #: ../contents/ui/lib/ConfigFontFamily.qml:11
 msgctxt "Use default font"
 msgid "Default"
-msgstr ""
+msgstr "Por defecto"
