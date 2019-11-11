@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dailyforecast \n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-dailyforecast\n"
-"POT-Creation-Date: 2019-11-05 17:53-0500\n"
+"POT-Creation-Date: 2019-11-11 18:43-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,48 +21,48 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:32
+#: ../contents/ui/config/ConfigGeneral.qml:35
 msgid "Show weather warnings"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:37
+#: ../contents/ui/config/ConfigGeneral.qml:40
 msgid "Desktop Widget: Show background"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:42
+#: ../contents/ui/config/ConfigGeneral.qml:45
 msgid "Show background around each day"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:47
+#: ../contents/ui/config/ConfigGeneral.qml:50
 msgid "Days Visible:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:69
+#: ../contents/ui/config/ConfigGeneral.qml:72
 msgid "0 = Show all available data"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:79
+#: ../contents/ui/config/ConfigGeneral.qml:82
 msgid "Font Family:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:89
+#: ../contents/ui/config/ConfigGeneral.qml:92
 msgid "Date:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:91 ../contents/ui/config/ConfigGeneral.qml:97
+#: ../contents/ui/config/ConfigGeneral.qml:94 ../contents/ui/config/ConfigGeneral.qml:100
 msgctxt "font size suffix"
 msgid "pt"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:95
+#: ../contents/ui/config/ConfigGeneral.qml:98
 msgid "Min/Max Temp:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:105
+#: ../contents/ui/config/ConfigGeneral.qml:108
 msgid "Text:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:112
+#: ../contents/ui/config/ConfigGeneral.qml:115
 msgid "Outline:"
 msgstr ""
 
