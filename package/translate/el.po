@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: simpleweather\n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-dailyforecast\n"
-"POT-Creation-Date: 2019-11-11 18:43-0500\n"
+"POT-Creation-Date: 2019-11-12 11:25-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,64 +15,64 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../contents/config/config.qml:6
+#: ../contents/config/config.qml
 msgid "General"
 msgstr "Γενικά"
 
-#: ../contents/ui/config/ConfigGeneral.qml:35
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Show weather warnings"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:40
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Desktop Widget: Show background"
 msgstr "Μικροεφαρμογές Επιφάνειας Εργασίας: Εμφάνιση Φόντου"
 
-#: ../contents/ui/config/ConfigGeneral.qml:45
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Show background around each day"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:50
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Days Visible:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:72
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "0 = Show all available data"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:82
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Font Family:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:92
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Date:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:94 ../contents/ui/config/ConfigGeneral.qml:100
+#: ../contents/ui/config/ConfigGeneral.qml
 msgctxt "font size suffix"
 msgid "pt"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:98
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Min/Max Temp:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:108
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Text:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:115
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Outline:"
 msgstr ""
 
-#: ../contents/ui/DailyForecastView.qml:118 ../contents/ui/DailyForecastView.qml:135
+#: ../contents/ui/DailyForecastView.qml
 msgid "%1°"
 msgstr "%1°"
 
-#: ../contents/ui/lib/AppletVersion.qml:41
+#: ../contents/ui/lib/AppletVersion.qml
 msgid "<b>Version:</b> %1"
 msgstr "<b>Έκδοση:</b> %1"
 
-#: ../contents/ui/lib/ConfigFontFamily.qml:11
+#: ../contents/ui/lib/ConfigFontFamily.qml
 msgctxt "Use default font"
 msgid "Default"
 msgstr ""
