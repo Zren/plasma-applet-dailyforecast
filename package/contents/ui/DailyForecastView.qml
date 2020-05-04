@@ -6,41 +6,45 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 
 import org.kde.plasma.private.weather 1.0 as WeatherPlugin
 
-RowLayout {
+GridLayout {
 	id: dailyForecastView
-	spacing: units.smallSpacing
-	opacity: weatherData.hasData ? 1 : 0
-	Behavior on opacity { NumberAnimation { duration: 1000 } }
 
-	readonly property color textColor: plasmoid.configuration.textColor || theme.textColor
-	readonly property color outlineColor: plasmoid.configuration.outlineColor || theme.backgroundColor
-
-	readonly property bool showOutline: plasmoid.configuration.showOutline
-
-	readonly property string fontFamily: plasmoid.configuration.fontFamily || theme.defaultFont.family
-	readonly property var fontBold: plasmoid.configuration.bold ? Font.Bold : Font.Normal
-
+	//--- Settings
 	readonly property int dateFontSize: plasmoid.configuration.dateFontSize * units.devicePixelRatio
 	readonly property int minMaxFontSize: plasmoid.configuration.minMaxFontSize * units.devicePixelRatio
-
-	property alias model: dayRepeater.model
-	readonly property real fadedOpacity: 0.7
+	
 	readonly property int showNumDays: plasmoid.configuration.showNumDays
 	readonly property bool showDailyBackground: plasmoid.configuration.showDailyBackground
 
-	// Note: minItemWidth causes a binding loop
-	readonly property int minItemWidth: {
-		var minWidth = 0
-		for (var i = 0; i < dayRepeater.count; i++) {
-			var item = dayRepeater.itemAt(i)
-			if (!item.visible) {
-				continue
+	//---
+	columnSpacing: units.smallSpacing
+	rowSpacing: units.smallSpacing
+
+	// EnvCan has 2 day items for day/night, so we use 2 rows.
+	// Other sources only need 1 row.
+	readonly property int showNumDayItems: {
+		if (weatherData.weatherSourceIsEnvcan) {
+			if (weatherData.dataStartsWithNight) {
+				return showNumDays * 2 - 1
+			} else {
+				return showNumDays * 2
 			}
-			if (i == 0 || item.width < minWidth) {
-				minWidth = item.width
-			}
+		} else {
+			return showNumDays
 		}
-		return minWidth
+	}
+	rows: weatherData.weatherSourceIsEnvcan ? 2 : 1
+	flow: GridLayout.TopToBottom
+
+	//--- Layout
+	property alias model: dayRepeater.model
+
+	// [EnvCan only] Takes the place of "today" if model starts with "night".
+	Item {
+		id: placeholderDayItem
+		visible: weatherData.dataStartsWithNight
+		Layout.fillWidth: true
+		Layout.fillHeight: true
 	}
 
 	Repeater {
@@ -53,12 +57,14 @@ RowLayout {
 			implicitHeight: dayItemLayout.implicitHeight + frame.margins.vertical
 			Layout.fillWidth: true
 			Layout.fillHeight: true
+			property alias dayItemIcon: dayItemIcon
+			property alias frame: frame
 
 			visible: {
 				if (dailyForecastView.showNumDays == 0) { // Show all
 					return true
 				} else {
-					return (index+1) <= dailyForecastView.showNumDays
+					return (index+1) <= dailyForecastView.showNumDayItems
 				}
 			}
 
@@ -78,69 +84,47 @@ RowLayout {
 				anchors.bottomMargin: frame.margins.bottom
 				spacing: 0
 
-				PlasmaComponents.Label {
+				WLabel {
 					text: modelData.dayLabel || ""
 
-					opacity: dailyForecastView.fadedOpacity
-
-					font.pointSize: -1
+					opacity: forecastLayout.fadedOpacity
 					font.pixelSize: dailyForecastView.dateFontSize
-					font.family: dailyForecastView.fontFamily
-					font.weight: dailyForecastView.fontBold
-					color: dailyForecastView.textColor
-					style: dailyForecastView.showOutline ? Text.Outline : Text.Normal
-					styleColor: dailyForecastView.outlineColor
 					Layout.alignment: Qt.AlignHCenter
 				}
 
 				PlasmaCore.IconItem {
+					id: dayItemIcon
 					Layout.fillWidth: true
 					Layout.fillHeight: true
-					Layout.maximumWidth: dailyForecastView.minItemWidth
-					Layout.maximumHeight: dailyForecastView.minItemWidth
 					Layout.alignment: Qt.AlignCenter
 					source: modelData.forecastIcon
 					roundToIconSize: false
-					width: parent.width * 1.2
-					height: parent.width * 1.2
 
 					// Rectangle { anchors.fill: parent; color: "transparent"; border.width: 1; border.color: "#f00"}
 				}
 
-				RowLayout {
+				ColumnLayout {
 					Layout.alignment: Qt.AlignHCenter
-					spacing: units.smallSpacing
+					spacing: 0
 
-					PlasmaComponents.Label {
+					WLabel {
 						readonly property var value: modelData.tempHigh
 
 						readonly property bool hasValue: !isNaN(value)
-						text: hasValue ? i18n("%1°", value) : ""
+						text: hasValue ? weatherData.formatTempShort(value) : ""
 						visible: hasValue
-						font.pointSize: -1
 						font.pixelSize: dailyForecastView.minMaxFontSize
-						font.family: dailyForecastView.fontFamily
-						font.weight: dailyForecastView.fontBold
-						color: dailyForecastView.textColor
-						style: dailyForecastView.showOutline ? Text.Outline : Text.Normal
-						styleColor: dailyForecastView.outlineColor
 						Layout.alignment: Qt.AlignHCenter
 					}
 
-					PlasmaComponents.Label {
+					WLabel {
 						readonly property var value: modelData.tempLow
-						opacity: dailyForecastView.fadedOpacity
+						opacity: forecastLayout.fadedOpacity
 
 						readonly property bool hasValue: !isNaN(value)
-						text: hasValue ? i18n("%1°", value) : ""
+						text: hasValue ? weatherData.formatTempShort(value) : ""
 						visible: hasValue
-						font.pointSize: -1
 						font.pixelSize: dailyForecastView.minMaxFontSize
-						font.family: dailyForecastView.fontFamily
-						font.weight: dailyForecastView.fontBold
-						color: dailyForecastView.textColor
-						style: dailyForecastView.showOutline ? Text.Outline : Text.Normal
-						styleColor: dailyForecastView.outlineColor
 						Layout.alignment: Qt.AlignHCenter
 					}
 				}

@@ -6,6 +6,8 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 
 import org.kde.plasma.private.weather 1.0 as WeatherPlugin
 
+import "./libweather"
+
 Item {
 	id: widget
 
@@ -21,10 +23,10 @@ Item {
 		Plasmoid.backgroundHints: isDesktopContainment && !plasmoid.configuration.showBackground ? PlasmaCore.Types.NoBackground : PlasmaCore.Types.DefaultBackground
 
 		property Item contentItem: weatherData.needsConfiguring ? configureButton : forecastLayout
-		implicitWidth: contentItem.implicitWidth
-		implicitHeight: contentItem.implicitHeight
-		Layout.minimumWidth: implicitWidth
-		Layout.minimumHeight: implicitHeight
+		Layout.preferredWidth: 400 * units.devicePixelRatio
+		Layout.preferredHeight: 200 * units.devicePixelRatio
+		width: Layout.preferredWidth
+		height: Layout.preferredHeight
 
 		PlasmaComponents.Button {
 			id: configureButton
@@ -32,38 +34,25 @@ Item {
 			visible: weatherData.needsConfiguring
 			text: i18ndc("plasma_applet_org.kde.plasma.weather", "@action:button", "Configure...")
 			onClicked: plasmoid.action("configure").trigger()
+			Layout.minimumWidth: implicitWidth
+			Layout.minimumHeight: implicitHeight
 		}
 
-		ColumnLayout {
+		ForecastLayout {
 			id: forecastLayout
 			anchors.fill: parent
-			spacing: units.smallSpacing
-
-			DailyForecastView {
-				id: dailyForecastView
-			}
-
-			NoticesListView {
-				Layout.fillWidth: true
-				model: weatherData.watchesModel
-				readonly property bool showWatches: plasmoid.configuration.showWarnings
-				visible: showWatches && model.length > 0
-				state: "Watches"
-			}
-
-			NoticesListView {
-				Layout.fillWidth: true
-				model: weatherData.warningsModel
-				readonly property bool showWarnings: plasmoid.configuration.showWarnings
-				visible: showWarnings && model.length > 0
-				state: "Warnings"
-			}
+			visible: !weatherData.needsConfiguring
 		}
 
 	}
 
+	function action_refresh() {
+		weatherData.refresh()
+	}
 
 	Component.onCompleted: {
+		plasmoid.setAction("refresh", i18n("Refresh"), "view-refresh")
+
 		// plasmoid.action("configure").trigger()
 	}
 }

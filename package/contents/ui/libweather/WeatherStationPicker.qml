@@ -1,3 +1,5 @@
+// Version 2
+
 /*
  * Copyright 2016,2018  Friedrich W. H. Kossebau <kossebau@kde.org>
  *
@@ -77,7 +79,7 @@ ColumnLayout {
 				onToggled: {
 					model.checked = checked;
 					checked = Qt.binding(function() { return model.checked; });
-					weatherStationConfigPage.configurationChanged();
+					// weatherStationConfigPage.configurationChanged();
 				}
 			}
 			onObjectAdded: serviceSelectionMenu.insertItem(index, object)

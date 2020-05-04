@@ -1,3 +1,5 @@
+// Version 1
+
 /*
  * Copyright 2018  Friedrich W. H. Kossebau <kossebau@kde.org>
  *

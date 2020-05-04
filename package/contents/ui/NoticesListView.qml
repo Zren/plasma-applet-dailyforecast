@@ -1,4 +1,4 @@
-// Version 1
+// Version 2
 
 import QtQuick 2.7
 import QtQuick.Layouts 1.1
@@ -14,6 +14,7 @@ ColumnLayout {
 
 	spacing: units.smallSpacing
 
+	property int horizontalAlignment: Text.AlignLeft
 	property color backgroundColor: "#800"
 	property color borderColor: "#800"
 	property color textColor: "#eee"
@@ -83,6 +84,7 @@ ColumnLayout {
 				anchors.right: parent.right
 				anchors.rightMargin: noticeItem.horPadding
 				elide: Text.ElideRight
+				horizontalAlignment: noticesListView.horizontalAlignment
 			}
 		}
 	}
