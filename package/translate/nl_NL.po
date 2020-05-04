@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: simpleweather\n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-dailyforecast\n"
-"POT-Creation-Date: 2019-11-12 11:25-0500\n"
+"POT-Creation-Date: 2020-05-04 19:38-0400\n"
 "PO-Revision-Date: 2019-11-12 14:27+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
@@ -67,10 +67,6 @@ msgstr "Tekst:"
 msgid "Outline:"
 msgstr "Contour:"
 
-#: ../contents/ui/DailyForecastView.qml
-msgid "%1°"
-msgstr "%1°"
-
 #: ../contents/ui/lib/AppletVersion.qml
 msgid "<b>Version:</b> %1"
 msgstr "<b>Versie:</b> %1"
@@ -79,3 +75,14 @@ msgstr "<b>Versie:</b> %1"
 msgctxt "Use default font"
 msgid "Default"
 msgstr "Standaard"
+
+#: ../contents/ui/libweather/WeatherData.qml
+msgid "Wind:"
+msgstr ""
+
+#: ../contents/ui/main.qml
+msgid "Refresh"
+msgstr ""
+
+#~ msgid "%1°"
+#~ msgstr "%1°"
