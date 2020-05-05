@@ -1,4 +1,4 @@
-// Version 3
+// Version 5
 
 import QtQuick 2.0
 import QtQuick.Controls 1.0
@@ -15,36 +15,44 @@ ConfigComboBox {
 		{ value: "c", text: i18n("C") },
 	]
 }
+ConfigComboBox {
+	configKey: "appDescription"
+	populated: false
+	onPopulate: {
+		model = [
+			{ value: "a", text: i18n("A") },
+			{ value: "b", text: i18n("B") },
+			{ value: "c", text: i18n("C") },
+		]
+	}
+}
 */
 RowLayout {
 	id: configComboBox
 
 	property string configKey: ''
 	readonly property var currentItem: comboBox.model[comboBox.currentIndex]
-	readonly property string value: currentItem ? currentItem.value : ""
+	readonly property string value: currentItem ? currentItem[valueRole] : ""
 	readonly property string configValue: configKey ? plasmoid.configuration[configKey] : ""
 	onConfigValueChanged: {
 		if (!comboBox.focus && value != configValue) {
-			setValue(configValue)
+			selectValue(configValue)
 		}
 	}
 
 	property alias textRole: comboBox.textRole
+	property alias valueRole: comboBox.valueRole
 	property alias model: comboBox.model
 
 	property alias before: labelBefore.text
 	property alias after: labelAfter.text
 
 	signal populate()
-	property bool populated: false
+	property bool populated: true
 
-	function setValue(newValue) {
-		for (var i = 0; i < comboBox.model.length; i++) {
-			if (comboBox.model[i].value == newValue) {
-				comboBox.currentIndex = i
-				break
-			}
-		}
+	Component.onCompleted: {
+		populate()
+		selectValue(configValue)
 	}
 
 	Label {
@@ -56,19 +64,18 @@ RowLayout {
 	ComboBox {
 		id: comboBox
 		textRole: "text" // Doesn't autodeduce from model if we manually populate it
+		property string valueRole: "value"
 
 		model: []
 
-		Component.onCompleted: {
-			populate()
-			selectValue(configValue)
-		}
-
 		onCurrentIndexChanged: {
-			if (currentIndex >= 0 && typeof model !== 'number') {
-				var val = model[currentIndex].value
-				if (configKey && (typeof val !== "undefined") && populated) {
-					plasmoid.configuration[configKey] = val
+			if (typeof model !== 'number' && 0 <= currentIndex && currentIndex < count) {
+				var item = model[currentIndex]
+				if (typeof item !== "undefined") {
+					var val = item[valueRole]
+					if (configKey && (typeof val !== "undefined") && populated) {
+						plasmoid.configuration[configKey] = val
+					}
 				}
 			}
 		}
@@ -94,7 +101,7 @@ RowLayout {
 
 	function findValue(val) {
 		for (var i = 0; i < size(); i++) {
-			if (model[i].value == val) {
+			if (model[i][valueRole] == val) {
 				return i
 			}
 		}
