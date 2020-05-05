@@ -1,3 +1,11 @@
+## v4 - May 5 2020
+
+* Support changing units (eg: Celsius to Fahrenheit) (https://github.com/Zren/plasma-applet-simpleweather/issues/15)
+* Use 2 rows for EnvCan (day/night).
+* Only show 5 days at most by default.
+* Add "Refresh" to the contextmenu.
+* Fix scrollbar overlap in settings.
+
 ## v3 - November 12 2019
 
 * Show forecast label when hovering in a tooltip.
