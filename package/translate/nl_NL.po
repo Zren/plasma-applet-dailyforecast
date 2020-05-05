@@ -78,11 +78,8 @@ msgstr "Standaard"
 
 #: ../contents/ui/libweather/WeatherData.qml
 msgid "Wind:"
-msgstr ""
+msgstr "Wind:"
 
 #: ../contents/ui/main.qml
 msgid "Refresh"
-msgstr ""
-
-#~ msgid "%1°"
-#~ msgstr "%1°"
+msgstr "Verversen"

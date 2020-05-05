@@ -80,6 +80,3 @@ msgstr ""
 #: ../contents/ui/main.qml
 msgid "Refresh"
 msgstr ""
-
-#~ msgid "%1°"
-#~ msgstr "%1°"

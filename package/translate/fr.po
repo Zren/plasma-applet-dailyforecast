@@ -71,7 +71,7 @@ msgstr "<b>Version:</b> %1"
 #: ../contents/ui/lib/ConfigFontFamily.qml
 msgctxt "Use default font"
 msgid "Default"
-msgstr ""
+msgstr "Défaut"
 
 #: ../contents/ui/libweather/WeatherData.qml
 msgid "Wind:"
@@ -79,7 +79,4 @@ msgstr ""
 
 #: ../contents/ui/main.qml
 msgid "Refresh"
-msgstr ""
-
-#~ msgid "%1°"
-#~ msgstr "%1°"
+msgstr "Rafraîchir"
