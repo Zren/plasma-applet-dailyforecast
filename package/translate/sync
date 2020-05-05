@@ -1,5 +1,5 @@
 #!/bin/sh
-# Version: 1
+# Version: 2
 
 # https://techbase.kde.org/Development/Tutorials/Localization/i18n_Build_Systems
 # Based on: https://github.com/psifidotos/nowdock-plasmoid/blob/master/po/Messages.sh
@@ -74,6 +74,8 @@ for cat in $catalogs; do
 				--use-first \
 				-o "$cat.new" \
 				"$cat.new" "${otherWidgetCat}"
+		else
+			echo "[sync]     Not found '${otherWidgetName}/package/translate/${cat}'"
 		fi
 	done
 
