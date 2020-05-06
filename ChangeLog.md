@@ -1,3 +1,7 @@
+## v5 - May 6 2020
+
+* Revert min/max temp shown in a column (v4) instead of a single row (v3 and below).
+
 ## v4 - May 5 2020
 
 * Support changing units (eg: Celsius to Fahrenheit) (https://github.com/Zren/plasma-applet-simpleweather/issues/15)
