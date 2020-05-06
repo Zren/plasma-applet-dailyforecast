@@ -15,6 +15,7 @@ GridLayout {
 	
 	readonly property int showNumDays: plasmoid.configuration.showNumDays
 	readonly property bool showDailyBackground: plasmoid.configuration.showDailyBackground
+	readonly property bool showMinTempBelow: plasmoid.configuration.showMinTempBelow
 
 	//---
 	columnSpacing: units.smallSpacing
@@ -103,9 +104,11 @@ GridLayout {
 					// Rectangle { anchors.fill: parent; color: "transparent"; border.width: 1; border.color: "#f00"}
 				}
 
-				ColumnLayout {
+				GridLayout {
 					Layout.alignment: Qt.AlignHCenter
-					spacing: 0
+					columnSpacing: units.smallSpacing
+					rowSpacing: 0
+					columns: dailyForecastView.showMinTempBelow ? 1 : 2
 
 					WLabel {
 						readonly property var value: modelData.tempHigh
