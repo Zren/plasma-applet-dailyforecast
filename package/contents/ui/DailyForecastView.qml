@@ -108,7 +108,7 @@ GridLayout {
 					Layout.alignment: Qt.AlignHCenter
 					columnSpacing: units.smallSpacing
 					rowSpacing: 0
-					columns: dailyForecastView.showMinTempBelow ? 1 : 2
+					flow: dailyForecastView.showMinTempBelow ? GridLayout.TopToBottom : GridLayout.LeftToRight
 
 					WLabel {
 						readonly property var value: modelData.tempHigh
