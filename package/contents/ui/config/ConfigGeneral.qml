@@ -57,6 +57,10 @@ ConfigPage {
 			
 			readonly property bool isShowingAll: showNumDays.configValue == 0
 
+			SystemPalette {
+				id: syspal
+			}
+
 			Rectangle {
 				id: showAllRect
 				radius: 2 * Kirigami.Units.devicePixelRatio
