@@ -1,7 +1,7 @@
-// Version 1
+// Version 2
 
-import QtQuick 2.5
-import QtQuick.Controls 2.5 as QtControls
+import QtQuick 2.0
+import QtQuick.Controls 2.0 as QtControls
 
 QtControls.ComboBox {
 	property string configKey
