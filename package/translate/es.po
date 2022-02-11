@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: simpleweather\n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-dailyforecast\n"
-"POT-Creation-Date: 2020-05-04 19:38-0400\n"
+"POT-Creation-Date: 2022-02-10 21:32-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 19.04.3\n"
+
+#: ../metadata.desktop
+msgid "Daily Forecast"
+msgstr ""
+
+#: ../metadata.desktop
+msgid "Daily weather forecast icons with min/max temp."
+msgstr ""
 
 #: ../contents/config/config.qml
 msgid "General"
@@ -66,11 +74,7 @@ msgstr "Texto:"
 msgid "Outline:"
 msgstr "Contorno:"
 
-#: ../contents/ui/lib/AppletVersion.qml
-msgid "<b>Version:</b> %1"
-msgstr "<b>Versión:</b> %1"
-
-#: ../contents/ui/lib/ConfigFontFamily.qml
+#: ../contents/ui/libconfig/FontFamily.qml
 msgctxt "Use default font"
 msgid "Default"
 msgstr "Por defecto"
