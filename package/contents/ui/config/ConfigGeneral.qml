@@ -1,57 +1,58 @@
 import QtQuick 2.0
-import QtQuick.Controls 1.0
+import QtQuick.Controls 2.0 as QQC2
 import QtQuick.Layouts 1.0
 import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.kirigami 2.5 as Kirigami
 
-import org.kde.kirigami 2.3 as Kirigami
-import org.kde.plasma.private.weather 1.0 as WeatherPlugin
-
-import "../lib"
-import "../libweather"
+import "../libweather" as LibWeather
+import "../libconfig" as LibConfig
 
 Kirigami.FormLayout {
 	Layout.fillWidth: true
 
-	ConfigWeatherStationPicker {
+	LibWeather.ConfigWeatherStationPicker {
 		configKey: 'source'
 	}
-	WeatherStationCredits {
+	LibWeather.WeatherStationCredits {
 		id: weatherStationCredits
 	}
 
-	ConfigSpinBox {
+	LibConfig.SpinBox {
 		Kirigami.FormData.label: i18ndc("plasma_applet_org.kde.plasma.weather", "@label:spinbox", "Update every:")
 		configKey: "updateInterval"
 		suffix: i18ndc("plasma_applet_org.kde.plasma.weather", "@item:valuesuffix spacing to number + unit (minutes)", " min")
 		stepSize: 5
-		minimumValue: 30
-		maximumValue: 3600
+		from: 30
+		to: 3600
 	}
 
-	ConfigCheckBox {
+	LibConfig.CheckBox {
 		configKey: "showWarnings"
 		text: i18n("Show weather warnings")
 	}
 
-	ConfigCheckBox {
+	LibConfig.CheckBox {
 		configKey: "showBackground"
 		text: i18n("Desktop Widget: Show background")
 	}
 
-	ConfigCheckBox {
+	LibConfig.CheckBox {
 		configKey: "showDailyBackground"
 		text: i18n("Show background around each day")
 	}
 
-	ConfigSpinBox {
-		id: showNumDays
+	RowLayout {
 		Kirigami.FormData.label: i18n("Days Visible:")
-		configKey: "showNumDays"
-		stepSize: 1
-		minimumValue: 0
-		maximumValue: 14
-		
-		readonly property bool isShowingAll: showNumDays.configValue == 0
+
+		LibConfig.SpinBox {
+			id: showNumDays
+			configKey: "showNumDays"
+			stepSize: 1
+			from: 0
+			to: 14
+			
+			readonly property bool isShowingAll: showNumDays.configValue == 0
+		}
 
 		SystemPalette {
 			id: syspal
@@ -65,7 +66,7 @@ Kirigami.FormLayout {
 			implicitWidth: showingAllLabel.implicitWidth + showingAllLabel.anchors.margins*2
 			implicitHeight: showingAllLabel.implicitHeight + showingAllLabel.anchors.margins*2
 
-			Label {
+			QQC2.Label {
 				id: showingAllLabel
 				anchors.fill: parent
 				anchors.margins: 4 * Kirigami.Units.devicePixelRatio
@@ -80,42 +81,23 @@ Kirigami.FormLayout {
 		Kirigami.FormData.isSection: true
 	}
 
-	ConfigUnitComboBox {
-		id: temperatureComboBox
-		configKey: 'temperatureUnitId'
-		Kirigami.FormData.label: i18ndc("plasma_applet_org.kde.plasma.weather", "@label:listbox", "Temperature:")
-		model: WeatherPlugin.TemperatureUnitListModel
-
-		DisplayUnits { id: displayUnits }
-		function serializeWith(nextValue) {
-			displayUnits.setTemperatureUnitId(nextValue)
-		}
-		Component.onCompleted: {
-			temperatureComboBox.populateWith(displayUnits.temperatureUnitId)
-		}
-	}
-
-	Kirigami.Separator {
-		Kirigami.FormData.isSection: true
-	}
-
 	RowLayout {
 		Kirigami.FormData.label: i18n("Font Family:")
-		ConfigFontFamily {
+		LibConfig.FontFamily {
 			configKey: 'fontFamily'
 		}
-		ConfigTextFormat {
+		LibConfig.TextFormat {
 			boldConfigKey: 'bold'
 		}
 	}
 
-	ConfigSpinBox {
+	LibConfig.SpinBox {
 		Kirigami.FormData.label: i18n("Date:")
 		configKey: "dateFontSize"
 		suffix: i18nc("font size suffix", "pt")
 	}
 
-	ConfigSpinBox {
+	LibConfig.SpinBox {
 		Kirigami.FormData.label: i18n("Min/Max Temp:")
 		configKey: "minMaxFontSize"
 		suffix: i18nc("font size suffix", "pt")
@@ -125,27 +107,25 @@ Kirigami.FormLayout {
 		Kirigami.FormData.isSection: true
 	}
 
-	ConfigColor {
+	LibConfig.ColorField {
 		Kirigami.FormData.label: i18n("Text:")
 		configKey: "textColor"
 		defaultColor: PlasmaCore.Theme.textColor
-		label: ""
 	}
 
-	ConfigColor {
-		Kirigami.FormData.label: i18n("Outline:")
-		configKey: "outlineColor"
-		defaultColor: PlasmaCore.Theme.backgroundColor
-		label: ""
 
-		property string checkedConfigKey: "showOutline"
-		Kirigami.FormData.checkable: true
-		Kirigami.FormData.checked: checkedConfigKey ? plasmoid.configuration[checkedConfigKey] : false
-		Kirigami.FormData.onCheckedChanged: {
-			if (checkedConfigKey) {
-				plasmoid.configuration[checkedConfigKey] = Kirigami.FormData.checked
-			}
+	RowLayout {
+		Kirigami.FormData.label: i18n("Outline:")
+		Layout.fillWidth: true
+		LibConfig.CheckBox {
+			id: showOutline
+			configKey: "showOutline"
 		}
-		enabled: Kirigami.FormData.checked
+		LibConfig.ColorField {
+			Layout.fillWidth: true
+			configKey: "outlineColor"
+			defaultColor: PlasmaCore.Theme.backgroundColor
+			enabled: showOutline.checked
+		}
 	}
 }
