@@ -1,25 +1,21 @@
 import QtQuick 2.7
 import QtQuick.Layouts 1.1
-import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.components 2.0 as PlasmaComponents
-
-import org.kde.plasma.private.weather 1.0 as WeatherPlugin
 
 GridLayout {
 	id: dailyForecastView
 
 	//--- Settings
-	readonly property int dateFontSize: plasmoid.configuration.dateFontSize * units.devicePixelRatio
-	readonly property int minMaxFontSize: plasmoid.configuration.minMaxFontSize * units.devicePixelRatio
+	readonly property int dateFontSize: plasmoid.configuration.dateFontSize * PlasmaCore.Units.devicePixelRatio
+	readonly property int minMaxFontSize: plasmoid.configuration.minMaxFontSize * PlasmaCore.Units.devicePixelRatio
 	
 	readonly property int showNumDays: plasmoid.configuration.showNumDays
 	readonly property bool showDailyBackground: plasmoid.configuration.showDailyBackground
 	readonly property bool showMinTempBelow: plasmoid.configuration.showMinTempBelow
 
 	//---
-	columnSpacing: units.smallSpacing
-	rowSpacing: units.smallSpacing
+	columnSpacing: PlasmaCore.Units.smallSpacing
+	rowSpacing: PlasmaCore.Units.smallSpacing
 
 	// EnvCan has 2 day items for day/night, so we use 2 rows.
 	// Other sources only need 1 row.
@@ -106,7 +102,7 @@ GridLayout {
 
 				GridLayout {
 					Layout.alignment: Qt.AlignHCenter
-					columnSpacing: units.smallSpacing
+					columnSpacing: PlasmaCore.Units.smallSpacing
 					rowSpacing: 0
 					flow: dailyForecastView.showMinTempBelow ? GridLayout.TopToBottom : GridLayout.LeftToRight
 

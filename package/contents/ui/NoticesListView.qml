@@ -1,18 +1,15 @@
-// Version 2
+// Version 3
 
 import QtQuick 2.7
 import QtQuick.Layouts 1.1
-import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.components 2.0 as PlasmaComponents
-
-import org.kde.plasma.private.weather 1.0 as WeatherPlugin
+import org.kde.plasma.components 3.0 as PlasmaComponents3
 
 ColumnLayout {
 	id: noticesListView
 	property alias model: repeater.model
 
-	spacing: units.smallSpacing
+	spacing: PlasmaCore.Units.smallSpacing
 
 	property int horizontalAlignment: Text.AlignLeft
 	property color backgroundColor: "#800"
@@ -50,8 +47,8 @@ ColumnLayout {
 		Rectangle {
 			id: noticeItem
 			Layout.fillWidth: true
-			property int horPadding: 4 * units.devicePixelRatio
-			property int vertPadding: 2 * units.devicePixelRatio
+			property int horPadding: 4 * PlasmaCore.Units.devicePixelRatio
+			property int vertPadding: 2 * PlasmaCore.Units.devicePixelRatio
 			implicitHeight: vertPadding + noticeLabel.implicitHeight + vertPadding
 
 			color: getStateColor(noticesListView.backgroundColor)
@@ -62,8 +59,8 @@ ColumnLayout {
 				return noticeMouseArea.containsMouse ? Qt.lighter(c, 1.1) : c
 			}
 
-			border.width: 1 * units.devicePixelRatio
-			radius: 3 * units.devicePixelRatio
+			border.width: 1 * PlasmaCore.Units.devicePixelRatio
+			radius: 3 * PlasmaCore.Units.devicePixelRatio
 
 
 			MouseArea {
@@ -74,7 +71,7 @@ ColumnLayout {
 				onClicked: Qt.openUrlExternally(modelData.url)
 			}
 
-			PlasmaComponents.Label {
+			PlasmaComponents3.Label {
 				id: noticeLabel
 				text: modelData.description
 				color: noticeItem.labelColor

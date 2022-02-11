@@ -132,14 +132,14 @@ ConfigPage {
 		ConfigColor {
 			Kirigami.FormData.label: i18n("Text:")
 			configKey: "textColor"
-			defaultColor: theme.textColor
+			defaultColor: PlasmaCore.Theme.textColor
 			label: ""
 		}
 
 		ConfigColor {
 			Kirigami.FormData.label: i18n("Outline:")
 			configKey: "outlineColor"
-			defaultColor: theme.backgroundColor
+			defaultColor: PlasmaCore.Theme.backgroundColor
 			label: ""
 
 			property string checkedConfigKey: "showOutline"
