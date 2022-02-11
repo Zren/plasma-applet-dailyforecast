@@ -1,3 +1,15 @@
+## v6 - February 13 2022
+
+* Port to `QtQuick.Controls 2.0`, `PlasmaComponents 3.0`, and `Kirigami` config. Should work in Ubuntu 20.04 with Qt 5.12 and KDE Frameworks 5.68.
+* Merge changes to weather widget from upstream KDE weather widget.
+* Port missing `ServiceListModel` in Plasma 5.24 to use the `weatherDataSource.data['ions']` to get the list of weather data websites.
+* Use PlasmaCore Unit/Theme singletons.
+* Refactor dailyForecastModel to check if data exists.
+* Update i18n scripts.
+* Add Croatian translations by @VladimirMikulic (synced from simpleweather)
+* Add Slovenian translations by @Ugowsky (synced from simpleweather)
+* Updated Russian translations by @Morion-Self (synced from condensedweather)
+
 ## v5 - May 6 2020
 
 * Revert min/max temp shown in a column (v4) instead of a single row (v3 and below).
