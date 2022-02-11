@@ -21,7 +21,7 @@ msgstr "Главная"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Show weather warnings"
-msgstr ""
+msgstr "Показывать погодные предупреждения"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Desktop Widget: Show background"
@@ -33,11 +33,11 @@ msgstr ""
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Days Visible:"
-msgstr ""
+msgstr "Кол-во отображаемых дней:"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "0 = Show all available data"
-msgstr ""
+msgstr "0 = Показывать все доступные дни"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Font Family:"
@@ -45,7 +45,7 @@ msgstr ""
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Date:"
-msgstr ""
+msgstr "Дата:"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgctxt "font size suffix"
@@ -54,15 +54,15 @@ msgstr ""
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Min/Max Temp:"
-msgstr ""
+msgstr "Min/Max температура:"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Text:"
-msgstr ""
+msgstr "Текст:"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Outline:"
-msgstr ""
+msgstr "Контур:"
 
 #: ../contents/ui/lib/AppletVersion.qml
 msgid "<b>Version:</b> %1"
@@ -75,7 +75,7 @@ msgstr ""
 
 #: ../contents/ui/libweather/WeatherData.qml
 msgid "Wind:"
-msgstr ""
+msgstr "Ветер:"
 
 #: ../contents/ui/main.qml
 msgid "Refresh"
