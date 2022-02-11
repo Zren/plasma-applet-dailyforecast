@@ -1,7 +1,6 @@
-// Version 1
+// Version 2
 
 import QtQuick 2.5
-import QtQuick.Controls 2.5 as QtControls
 
 import org.kde.kirigami 2.5 as Kirigami
 import org.kde.plasma.private.weather 1.0 as WeatherPlugin

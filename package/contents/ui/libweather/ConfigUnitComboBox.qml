@@ -1,9 +1,9 @@
-// Version 2
+// Version 3
 
 import QtQuick 2.0
-import QtQuick.Controls 2.0 as QtControls
+import QtQuick.Controls 2.0 as QQC2
 
-QtControls.ComboBox {
+QQC2.ComboBox {
 	property string configKey
 
 	textRole: "display"

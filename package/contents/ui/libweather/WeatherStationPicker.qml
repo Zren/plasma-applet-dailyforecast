@@ -1,171 +1,162 @@
-// Version 2
+// Version 4
+// Based On: https://invent.kde.org/plasma/kdeplasma-addons/-/blame/master/applets/weather/package/contents/ui/config/WeatherStationPicker.qml
 
 /*
- * Copyright 2016,2018  Friedrich W. H. Kossebau <kossebau@kde.org>
+ * SPDX-FileCopyrightText: 2022 Chris Holland <zrenfire@gmail.com>
+ * SPDX-FileCopyrightText: 2016, 2018 Friedrich W. H. Kossebau <kossebau@kde.org>
  *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
- * the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 import QtQuick 2.9
 
-import QtQuick.Controls 1.4 as QtControls
+import QtQuick.Controls 2.5 as QQC2
 import QtQuick.Layouts 1.3
 
-import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.kirigami 2.8 as Kirigami
 
-import org.kde.plasma.private.weather 1.0
+import org.kde.plasma.private.weather 1.0 as WeatherPlugin
 
 
 ColumnLayout {
 	id: root
 
-	property alias selectedServices: serviceListModel.selectedServices
+	// Use weather dataengine to list weather providers instead of plasmoid.nativeInterface.providers
+	property alias providers: weatherDataSource.ionServiceList
+	readonly property bool hasProviders: providers.length > 0
+	property var weatherDataSource: PlasmaCore.DataSource {
+		id: weatherDataSource
+		engine: "weather"
+		connectedSources: ['ions']
+
+		// {"bbcukmet":"BBC Weather|bbcukmet","envcan":"Environment Canada|envcan","noaa":"NOAA's National Weather Service|noaa","wettercom":"wetter.com|wettercom"}
+		readonly property var ions: data['ions']
+		readonly property var ionServiceList: ions ? Object.keys(ions) : []
+		// onIonsChanged: console.log('ions', JSON.stringify(ions))
+		// onIonServiceListChanged: console.log('ionServiceList', JSON.stringify(ionServiceList))
+	}
+
 	property string source
-	readonly property bool canSearch: !!searchStringEdit.text && selectedServices.length
-	readonly property bool handlesEnterKey: canSearch && searchStringEdit.activeFocus
+	readonly property bool canSearch: !!searchStringEdit.text && hasProviders
 
 	function searchLocation() {
 		if (!canSearch) {
 			return;
 		}
-
-		// avoid automatic selection once model is refilled
-		locationListView.currentRow = -1;
-		locationListView.selection.clear();
 		noSearchResultReport.visible = false;
 		source = "";
-		locationListView.forceActiveFocus();
-
-		locationListModel.searchLocations(searchStringEdit.text, selectedServices);
+		locationListModel.searchLocations(searchStringEdit.text, root.providers);
 	}
 
-	function handleLocationSearchDone(success, searchString) {
-		if (!success) {
-			noSearchResultReport.text = i18ndc("plasma_applet_org.kde.plasma.weather", "@info", "No weather stations found for '%1'", searchString);
-			noSearchResultReport.visible = true;
-		}
-	}
-
-	LocationListModel {
+	WeatherPlugin.LocationListModel {
 		id: locationListModel
-		onLocationSearchDone: handleLocationSearchDone(success, searchString);
-	}
-
-	ServiceListModel {
-		id: serviceListModel
-	}
-
-	QtControls.Menu {
-		id: serviceSelectionMenu
-
-		Instantiator {
-			model: serviceListModel
-			delegate: QtControls.MenuItem {
-				text: model.display
-				checkable: true
-				checked: model.checked
-
-				onToggled: {
-					model.checked = checked;
-					checked = Qt.binding(function() { return model.checked; });
-					// weatherStationConfigPage.configurationChanged();
-				}
+		onLocationSearchDone: {
+			if (!success) {
+				noSearchResultReport.text = i18ndc("plasma_applet_org.kde.plasma.weather", "@info", "No weather stations found for '%1'", searchString);
+				noSearchResultReport.visible = true;
+			} else {
+				// If we got any results, pre-select the top item to potentially
+				// save the user a step
+				locationListView.currentIndex = 0;
+				noSearchResultReport.visible = false;
 			}
-			onObjectAdded: serviceSelectionMenu.insertItem(index, object)
-			onObjectRemoved: serviceSelectionMenu.removeItem(object)
 		}
-
 	}
 
-	ColumnLayout {
-		RowLayout {
+	RowLayout {
+		Layout.fillWidth: true
+
+		enabled: root.hasProviders
+
+		Kirigami.SearchField {
+			id: searchStringEdit
+
 			Layout.fillWidth: true
+			Layout.minimumWidth: implicitWidth
+			focus: true
+			placeholderText: i18ndc("plasma_applet_org.kde.plasma.weather", "@info:placeholder", "Enter location")
 
-			QtControls.TextField {
-				id: searchStringEdit
-
-				Layout.fillWidth: true
-				Layout.minimumWidth: implicitWidth
-				placeholderText: i18ndc("plasma_applet_org.kde.plasma.weather", "@info:placeholder", "Enter location")
-				onAccepted: {
+			Timer {
+				id: searchDelayTimer
+				interval: 500
+				onTriggered: {
 					searchLocation();
 				}
 			}
 
-			QtControls.Button {
-				id: serviceSelectionButton
-
-				iconName: "services"
-				tooltip: i18ndc("plasma_applet_org.kde.plasma.weather", "@info:tooltip", "Select weather services providers")
-				menu: serviceSelectionMenu
+			onTextChanged: {
+				searchDelayTimer.restart();
 			}
 
-			Item {
-				Layout.preferredHeight: Math.max(searchButton.height, searchStringEdit.height)
-				Layout.preferredWidth: Layout.preferredHeight
-
-				PlasmaComponents.BusyIndicator {
-					id: busy
-
-					anchors.fill: parent
-					visible: locationListModel.validatingInput
+			Keys.onPressed: {
+				if (event.key == Qt.Key_Up) {
+					if (locationListView.currentIndex != 0) {
+						locationListView.currentIndex--;
+					}
+					event.accepted = true;
+				} else if (event.key == Qt.Key_Down) {
+					if (locationListView.currentIndex != locationListView.count - 1) {
+						locationListView.currentIndex++;
+					}
+					event.accepted = true;
+				} else {
+					event.accepted = false;
 				}
 			}
+		}
+	}
 
-			QtControls.Button {
-				id: searchButton
+	QQC2.ScrollView {
+		Layout.fillWidth: true
+		Layout.fillHeight: true
 
-				iconName: "edit-find"
-				text: i18ndc("plasma_applet_org.kde.plasma.weather", "@action:button", "Search")
-				enabled: canSearch
+		enabled: root.hasProviders
+
+		Component.onCompleted: {
+			background.visible = true;
+		}
+
+		ListView {
+			id: locationListView
+			model: locationListModel
+			clip: true
+			focus: true
+			activeFocusOnTab: true
+			keyNavigationEnabled: true
+
+			onCurrentItemChanged: {
+				source = locationListModel.valueForListIndex(locationListView.currentIndex);
+			}
+
+			delegate: QQC2.ItemDelegate {
+				width: locationListView.width
+				text: model.display
+				highlighted: ListView.isCurrentItem
 
 				onClicked: {
-					searchLocation();
-				}
-			}
-		}
-
-		QtControls.TableView {
-			id: locationListView
-
-			Layout.minimumWidth: implicitWidth
-			Layout.minimumHeight: implicitHeight
-			Layout.fillWidth: true
-			Layout.fillHeight: true
-
-			headerVisible: false
-			model: locationListModel
-
-			onActivated: {
-				if (row !== -1 && rowCount) {
-					source = locationListModel.valueForListIndex(row);
+					locationListView.forceActiveFocus();
+					locationListView.currentIndex = index;
 				}
 			}
 
-			QtControls.TableViewColumn {
-				id: locationListViewStationColumn
-
-				movable: false
-				resizable: false
-				role: "display"
-			}
-
-			QtControls.Label {
+			QQC2.Label {
 				id: noSearchResultReport
 
-				anchors.centerIn: parent
+				anchors.fill: parent
+				horizontalAlignment: Text.AlignHCenter
+				verticalAlignment: Text.AlignVCenter
+				wrapMode: Text.WordWrap
 				visible: false
+				enabled: false
+			}
+
+			QQC2.BusyIndicator {
+				id: busy
+
+				anchors.centerIn: parent
+
+				visible: locationListModel.validatingInput
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-// Version 8
+// Version 9
 
 // For testing the DataSource, enable the dataengine debug logging with:
 // QT_LOGGING_RULES="kde.dataengine.weather=true" plasmoidviewer ...
@@ -213,10 +213,10 @@ QtObject {
 		return isNaN(data["Temperature"]) ? NaN : data["Temperature"]
 	}
 
-	property var dailyForecastModel: {
+	readonly property int forecastDayCount: parseInt((data && data["Total Weather Days"]) || "", 10)
+	function parseDailyForecastModel() {
 		var model = []
 
-		var forecastDayCount = parseInt((data && data["Total Weather Days"]) || "", 10)
 		if (isNaN(forecastDayCount) || forecastDayCount <= 0) {
 			return model
 		}
@@ -227,10 +227,6 @@ QtObject {
 				break
 			}
 			var tokens = parseForecast(i)
-			if (typeof data["Short Forecast Day " + i] === "undefined") {
-				// "Total Weather Days" can be "7", however there might not be a "Short Forecast Day 6"
-				break
-			}
 			var item = {
 				dayLabel: tokens[0],
 				forecastIcon: existingWeatherIconName(tokens[1]),
@@ -244,6 +240,8 @@ QtObject {
 		}
 		return model
 	}
+	property var dailyForecastModel: data ? parseDailyForecastModel() : []
+	// onDailyForecastModelChanged: console.log('dailyForecastModel', JSON.stringify(dailyForecastModel, null, '  '))
 
 	// To find a specific to test warnings, check the EnvCan national map at:
 	// https://weather.gc.ca/warnings/index_e.html

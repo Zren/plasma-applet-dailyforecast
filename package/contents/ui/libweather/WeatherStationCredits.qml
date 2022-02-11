@@ -1,7 +1,7 @@
-// Version 1
+// Version 2
 
 import QtQuick 2.0
-import QtQuick.Controls 1.0
+import QtQuick.Controls 2.0 as QQC2
 import QtQuick.Layouts 1.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 
@@ -50,7 +50,7 @@ Rectangle {
 		}
 	}
 
-	Label {
+	QQC2.Label {
 		id: weatherStationCreditsLabel
 		anchors.left: parent.left
 		anchors.leftMargin: parent.horzPadding
