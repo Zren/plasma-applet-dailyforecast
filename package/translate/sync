@@ -1,5 +1,5 @@
 #!/bin/sh
-# Version: 2
+# Version: 3
 
 # https://techbase.kde.org/Development/Tutorials/Localization/i18n_Build_Systems
 # Based on: https://github.com/psifidotos/nowdock-plasmoid/blob/master/po/Messages.sh
@@ -87,6 +87,7 @@ for cat in $catalogs; do
 		"$cat.new" "${DIR}/template.pot"
 
 	msgattrib \
+		${widthArg} \
 		--no-obsolete \
 		-o "$cat.new" \
 		"$cat.new"
