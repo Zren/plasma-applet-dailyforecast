@@ -1,6 +1,6 @@
-import QtQuick 2.7
-import QtQuick.Layouts 1.1
-import org.kde.plasma.core 2.0 as PlasmaCore
+import QtQuick
+import QtQuick.Layouts
+import org.kde.kirigami as Kirigami
 
 ColumnLayout {
 	id: forecastLayout
@@ -9,14 +9,14 @@ ColumnLayout {
 	Behavior on opacity { NumberAnimation { duration: 1000 } }
 
 	//--- Settings
-	spacing: PlasmaCore.Units.smallSpacing
+	spacing: Kirigami.Units.smallSpacing
 
-	readonly property color textColor: plasmoid.configuration.textColor || PlasmaCore.Theme.textColor
-	readonly property color outlineColor: plasmoid.configuration.outlineColor || PlasmaCore.Theme.backgroundColor
+	readonly property color textColor: plasmoid.configuration.textColor || Kirigami.Theme.textColor
+	readonly property color outlineColor: plasmoid.configuration.outlineColor || Kirigami.Theme.backgroundColor
 
 	readonly property bool showOutline: plasmoid.configuration.showOutline
 
-	readonly property string fontFamily: plasmoid.configuration.fontFamily || PlasmaCore.Theme.defaultFont.family
+	readonly property string fontFamily: plasmoid.configuration.fontFamily || Kirigami.Theme.defaultFont.family
 	readonly property var fontBold: plasmoid.configuration.bold ? Font.Bold : Font.Normal
 
 	readonly property real fadedOpacity: 0.7

@@ -1,15 +1,15 @@
-// Version 3
+// Version 4
 
-import QtQuick 2.7
-import QtQuick.Layouts 1.1
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.components 3.0 as PlasmaComponents3
+import QtQuick
+import QtQuick.Layouts
+import org.kde.plasma.components as PlasmaComponents3
+import org.kde.kirigami as Kirigami
 
 ColumnLayout {
 	id: noticesListView
 	property alias model: repeater.model
 
-	spacing: PlasmaCore.Units.smallSpacing
+	spacing: Kirigami.Units.smallSpacing
 
 	property int horizontalAlignment: Text.AlignLeft
 	property color backgroundColor: "#800"
@@ -47,8 +47,8 @@ ColumnLayout {
 		Rectangle {
 			id: noticeItem
 			Layout.fillWidth: true
-			property int horPadding: 4 * PlasmaCore.Units.devicePixelRatio
-			property int vertPadding: 2 * PlasmaCore.Units.devicePixelRatio
+			property int horPadding: 4 * Screen.devicePixelRatio
+			property int vertPadding: 2 * Screen.devicePixelRatio
 			implicitHeight: vertPadding + noticeLabel.implicitHeight + vertPadding
 
 			color: getStateColor(noticesListView.backgroundColor)
@@ -59,8 +59,8 @@ ColumnLayout {
 				return noticeMouseArea.containsMouse ? Qt.lighter(c, 1.1) : c
 			}
 
-			border.width: 1 * PlasmaCore.Units.devicePixelRatio
-			radius: 3 * PlasmaCore.Units.devicePixelRatio
+			border.width: 1 * Screen.devicePixelRatio
+			radius: 3 * Screen.devicePixelRatio
 
 
 			MouseArea {
