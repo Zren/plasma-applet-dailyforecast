@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: simpleweather\n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-dailyforecast\n"
-"POT-Creation-Date: 2022-02-10 21:32-0500\n"
+"POT-Creation-Date: 2024-03-13 02:48-0400\n"
 "PO-Revision-Date: 2022-02-14 13:31+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
@@ -18,13 +18,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: ../metadata.desktop
+#: ../metadata.json
 msgid "Daily Forecast"
 msgstr "Dagelijks weerbericht"
 
-#: ../metadata.desktop
+#: ../metadata.json
 msgid "Daily weather forecast icons with min/max temp."
-msgstr "Dagelijks weerbericht met pictogrammen en de minimum-/maximumtemperatuur"
+msgstr ""
+"Dagelijks weerbericht met pictogrammen en de minimum-/maximumtemperatuur"
 
 #: ../contents/config/config.qml
 msgid "General"

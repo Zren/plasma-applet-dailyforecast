@@ -9,9 +9,11 @@
 		],
 		"Category": "Environment and Weather",
 		"Description": "Daily weather forecast icons with min/max temp.",
+		"Description[nl]": "Dagelijks weerbericht met pictogrammen en de minimum-/maximumtemperatuur",
 		"Icon": "weather-clear",
 		"Id": "com.github.zren.dailyforecast",
 		"Name": "Daily Forecast",
+		"Name[nl]": "Dagelijks weerbericht",
 		"Version": "6",
 		"Website": "https://github.com/Zren/plasma-applet-dailyforecast"
 	},
