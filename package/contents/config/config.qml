@@ -1,6 +1,6 @@
-import QtQuick 2.0
-import org.kde.plasma.configuration 2.0
-import org.kde.plasma.private.weather 1.0 as WeatherPlugin
+import QtQuick
+import org.kde.plasma.configuration
+import org.kde.plasma.private.weather as WeatherPlugin
 
 ConfigModel {
 	ConfigCategory {

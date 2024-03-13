@@ -98,7 +98,7 @@ QQC2.SpinBox {
 		}
 	}
 
-	// Note: Qt5 used RegularExpressionValidator { regExp: /[\-\.\d]+/ }
+	// Note: Qt5 used RegExpValidator { regExp: /[\-\.\d]+/ }
 	// validator: RegularExpressionValidator {
 	// 	regularExpression: /[\-\.\d]+/
 	// }
