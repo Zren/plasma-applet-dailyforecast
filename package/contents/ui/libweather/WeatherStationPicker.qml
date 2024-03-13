@@ -1,4 +1,4 @@
-// Version 5
+// Version 6
 // Based On: https://invent.kde.org/plasma/kdeplasma-addons/-/blame/master/applets/weather/package/contents/ui/config/WeatherStationPicker.qml
 
 /*
