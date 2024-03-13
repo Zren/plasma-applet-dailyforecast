@@ -6,7 +6,7 @@ import org.kde.kirigami as Kirigami
 import "../libweather" as LibWeather
 import "../libconfig" as LibConfig
 
-Kirigami.FormLayout {
+LibConfig.FormKCM {
 	Layout.fillWidth: true
 
 	LibWeather.ConfigWeatherStationPicker {
