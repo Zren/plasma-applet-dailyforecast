@@ -14,7 +14,7 @@
 		"Id": "com.github.zren.dailyforecast",
 		"Name": "Daily Forecast",
 		"Name[nl]": "Dagelijks weerbericht",
-		"Version": "6",
+		"Version": "7",
 		"Website": "https://github.com/Zren/plasma-applet-dailyforecast"
 	},
 	"X-Plasma-API-Minimum-Version": "6.0"
