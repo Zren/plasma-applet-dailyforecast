@@ -53,6 +53,6 @@ PlasmoidItem {
 	]
 
 	Component.onCompleted: {
-		Plasmoid.internalAction("configure").trigger()
+		// Plasmoid.internalAction("configure").trigger()
 	}
 }
