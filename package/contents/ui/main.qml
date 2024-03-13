@@ -31,7 +31,7 @@ PlasmoidItem {
 			anchors.centerIn: parent
 			visible: weatherData.needsConfiguring
 			text: i18nd("plasma_applet_org.kde.plasma.weather", "Set location…")
-			onClicked: plasmoid.action("configure").trigger()
+			onClicked: Plasmoid.internalAction("configure").trigger()
 			Layout.minimumWidth: implicitWidth
 			Layout.minimumHeight: implicitHeight
 		}
@@ -44,13 +44,15 @@ PlasmoidItem {
 
 	}
 
-	function action_refresh() {
-		weatherData.refresh()
-	}
+	Plasmoid.contextualActions: [
+		PlasmaCore.Action {
+			text: i18n("Refresh")
+			icon.name: "view-refresh"
+			onTriggered: weatherData.refresh()
+		}
+	]
 
 	Component.onCompleted: {
-		plasmoid.setAction("refresh", i18n("Refresh"), "view-refresh")
-
-		// plasmoid.action("configure").trigger()
+		Plasmoid.internalAction("configure").trigger()
 	}
 }
